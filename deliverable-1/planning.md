@@ -2,6 +2,16 @@
 > _Note:_ This document is meant to evolve throughout the planning phase of your project.   That is, it makes sense for you commit regularly to this file while working on the project (especially edits/additions/deletions to the _Highlights_ section). Most importantly, it is a reflection of all the planning you work you've done in the first iteration. 
  > **This document will serve as a master plan between your team, your partner and your TA.**
 
+NOTE: ### Already-existed Mobile App
+- social journaling system
+- verified user
+- chat bot tracks mental health over time
+- technology used: mongoDB, firebase for chatbot interaction, mySQL, node.js, Python Django
+
+NOTE: access to mobile app beta testing
+NOTE: In the future: expand chat bot to voice, voice-to-text
+
+
 ## Product Details
  
 #### Q1: What are you planning to build?
@@ -9,9 +19,12 @@
  > Short (1 - 2 min' read)
  * Start with a single sentence, high-level description of the product.
  * Be clear - Describe the problem you are solving in simple terms.
- * Be concrete. For example:
-    * What are you planning to build? Is it a website, mobile app,
-   browser extension, command-line app, etc.?      
+
+* website that is an extension of the mobile app   
+* usecase:
+- tracking your mental health through conversations with the chatbot
+- connecting with other users called acccountability partners
+    
     * When describing the problem/need, give concrete examples of common use cases.
     * Assume your the reader knows nothing about the problem domain and provide the necessary context. 
  * Focus on *what* your product does, and avoid discussing *how* you're going to implement it.      
@@ -23,15 +36,45 @@
 
   > Short (1 - 2 min' read max)
  * Be specific (e.g. a 'a third-year university student studying Computer Science' and not 'a student')
+ 
+ * users:
+1. a third-year university student studying Computer Science with functional anxiety 
+2. a poltically liberal university student wanting to help people with similar mental health issues
+3. a psychiatrist looking to track his/her patient's mental health over time 
+ 
+NOTE: persona: young people, university students, politcally liberal, care about mental health, looking to help other people, don't have to have mental health problems, but can be functional people
+ 
  * **Feel free to use personas. You can create your personas as part of this Markdown file, or add a link to an external site (for example, [Xtensio](https://xtensio.com/user-persona/)).**
 
 #### Q3: Why would your users choose your product? What are they using today to solve their problem/need?
+
+Why choose your product:
+- our product has good chat bot functionality, more free flowing conversation with the chat bot
+- human interaction through our product - free accountability peer to peer communication in addition to therapists
+
+
+What are they using today:
+- apps with chat bots that are restrictive, can only choose specific choices
+- apps with chatbot have CBT
+- apps connect with therapist
+- apps that journal mental health
+- mental health app have bad retention rate
+
+
+Why does your product (as described in your answer to Q1) fits the needs of your users (as described in your answer to Q2)?
+- other mental health apps are tedious, with no human to human interaction
+- holistic view, emphasis on social interaction, should help with retention rate
+- integrated with journaling to make one app for all
+- reducing the burden, user is not responsible for reaching out when they are in a crisis because people reach out to the user on the regular basis because people are notified when the user is in crisis (deviating from norm)
+- monthly mental health report from chatbot, variation in mood and substance use, so one can see patterns (e.g. what is your mood, how many cigarettes smoked, hours of sleep)
+
+How does this align with your partner's organization's values/mission/mandate?
+
 
 > Short (1 - 2 min' read max)
  * We want you to "connect the dots" for us - Why does your product (as described in your answer to Q1) fits the needs of your users (as described in your answer to Q2)?
  * Explain the benefits of your product explicitly & clearly. For example:
     * Save users time (how much?)
-    * Allow users to discover new information (which information? And, why couldn't they discover it before?)
     * Provide users with more accurate and/or informative data (what kind of data? Why is it useful to them?)
     * Does this application exist in another form? If so, how does your differ and provide value to the users?
     * How does this align with your partner's organization's values/mission/mandate?
@@ -46,6 +89,32 @@
  * What is your testing strategy?
 
 #### Q5: What are the user stories that make up the MVP?
+
+NOTE:if you want to vent to the chatbot, you can talk to them about anything
+
+User Story 1:
+- As someone with anxiety, I want to regularly check in with the chat bot, in order to better track my mental health
+- Given the user opens the app on the homepage, when user clicks on the chatbot button and talk to the chat bot, then chat bot will record the users' mood, substance use so that user can check a historical report of their mood at any time
+
+User Story 2:
+- As someone who just had a something bad happened, I want to reach out to my accountability partner, in order to vent, talk to them, and improve my mood
+- Given the user opens the app, when I search for my accountability partner, then I can message them directly
+
+User Story 3:
+- As someone who wrote something out of the ordinary in the chatbot, I want someone to recognize I'm in crisis, in order to let my accountability partners reach out
+- Given the user messages the chat bot, when the chat bot detects something out of the norm, then the app notifies the user's accountability partners so they can reach out
+
+User Story 4:
+- As a psychiatrist (a special user),  I want to track my patient's mental health through the app, in order to better help them
+- Given the psychiatrist opens their patient's home page, when they click on their historical report, then they get access to their patient's historical moods
+
+User Story 5:
+- As a mental health organization (a special user), I want to spread education about mental health issues, in order to better help people
+- Given the organizational homepage, when the organization post, then everyone can see their posts globally even if they don't follow the organization
+
+User Story 6:
+- As a person with anxiety, I want to talk to the chat bot and have it generate a journal for me, in order to speed things up
+- Given the user chats to the chat bot, when the chat bot detects something worth posting, then the chat bot asks user if they want to post it as a journal (automatically generates)
 
  * At least 5 user stories concerning the main features of the application - note that this can broken down further
  * You must follow proper user story format (as taught in lecture) ```As a <user of the app>, I want to <do something in the app> in order to <accomplish some goal>```
