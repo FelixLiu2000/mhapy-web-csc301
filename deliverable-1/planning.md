@@ -1,50 +1,24 @@
-# YOUR PRODUCT/TEAM NAME
+# MHAPy
 > _Note:_ This document is meant to evolve throughout the planning phase of your project.   That is, it makes sense for you commit regularly to this file while working on the project (especially edits/additions/deletions to the _Highlights_ section). Most importantly, it is a reflection of all the planning you work you've done in the first iteration. 
  > **This document will serve as a master plan between your team, your partner and your TA.**
-
-NOTE: ### Already-existed Mobile App
-- social journaling system
-- verified user
-- chat bot tracks mental health over time
-- technology used: mongoDB, firebase for chatbot interaction, mySQL, node.js, Python Django
-
-NOTE: access to mobile app beta testing
-NOTE: In the future: expand chat bot to voice, voice-to-text
-
 
 ## Product Details
  
 #### Q1: What are you planning to build?
 
- > Short (1 - 2 min' read)
- * Start with a single sentence, high-level description of the product.
- * Be clear - Describe the problem you are solving in simple terms.
+We are planning to build a website whose purpose is to provide people a platform for those who want to improve their mental health. The website matches those working on their mental health with other users in order to interact and build a healthy social space.  Users can share what’s on their mind via a timeline on the home page. Via interactions with a chatbot, users can get helpful answers to questions, or suggested mental health routines.  The chatbot automatically links four “accountability partners” (other users of the app) who will see each others’ concerns, status updates, etc through posts on a timeline. There is also an analytics page that displays certain trends and statistics from data collected by the chatbot over time. The accountability partners also have access to group, and individual messaging, for more focused dialogs. Users can message others, create group chats, and receive notifications whenever an accountability partner messages them.
 
-* website that is an extension of the mobile app   
-* usecase:
-- tracking your mental health through conversations with the chatbot
-- connecting with other users called acccountability partners
-    
-    * When describing the problem/need, give concrete examples of common use cases.
-    * Assume your the reader knows nothing about the problem domain and provide the necessary context. 
- * Focus on *what* your product does, and avoid discussing *how* you're going to implement it.      
-   For example: This is not the time or the place to talk about which programming language and/or framework you are planning to use.
- * **Feel free (and very much encouraged) to include useful diagrams, mock-ups and/or links**.
-
+Mockups are included in the deliverable-1 folder.
 
 #### Q2: Who are your target users?
 
-  > Short (1 - 2 min' read max)
- * Be specific (e.g. a 'a third-year university student studying Computer Science' and not 'a student')
- 
- * users:
-1. a third-year university student studying Computer Science with functional anxiety 
-2. a poltically liberal university student wanting to help people with similar mental health issues
-3. a psychiatrist looking to track his/her patient's mental health over time 
- 
-NOTE: persona: young people, university students, politcally liberal, care about mental health, looking to help other people, don't have to have mental health problems, but can be functional people
- 
- * **Feel free to use personas. You can create your personas as part of this Markdown file, or add a link to an external site (for example, [Xtensio](https://xtensio.com/user-persona/)).**
+Our main target users are those with, or who are passionate about working on mental health issues.  Another target user would be professionals such as psychiatrists who want access to their patient’s data.  Below, we’ve included three personas to better encapsulate target users.
+
+[![Screen-Shot-2021-02-14-at-11-44-34.png](https://i.postimg.cc/3xV0VWr7/Screen-Shot-2021-02-14-at-11-44-34.png)](https://postimg.cc/Mn0Gj6jr)
+
+[![Screen-Shot-2021-02-14-at-11-44-42.png](https://i.postimg.cc/xdmN2Yqm/Screen-Shot-2021-02-14-at-11-44-42.png)](https://postimg.cc/8F1zR2Rk)
+
+[![Screen-Shot-2021-02-14-at-11-44-48.png](https://i.postimg.cc/85BF7HRP/Screen-Shot-2021-02-14-at-11-44-48.png)](https://postimg.cc/YG02VQDJ)
 
 #### Q3: Why would your users choose your product? What are they using today to solve their problem/need?
 
