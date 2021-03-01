@@ -1,0 +1,25 @@
+{
+  "name": "mhapy-web",
+  "version": "1.0.0",
+  "description": "A web interface for the mental health application, MHAPy.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "setup": "npm install && cd client && npm install && cd ..",
+    "build-run": "cd client && npm run build && cd .. && node server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/csc301-winter-2021/team-project-17-mhapy.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/csc301-winter-2021/team-project-17-mhapy/issues"
+  },
+  "homepage": "https://github.com/csc301-winter-2021/team-project-17-mhapy#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
