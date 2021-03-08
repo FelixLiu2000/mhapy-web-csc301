@@ -19,8 +19,5 @@ jobs:
       - name: Install dependencies
         run: npm run ci-setup
 
-      - name: Format using Prettier
+      - name: Format using Prettier and ESLint
         run: npm run format
-
-      - name: Run ESLint
-        run: npm run lint
