@@ -1,0 +1,6 @@
+/node_modules
+/client/build
+/client/node_modules
+/deliverable-1
+/deliverable-2
+.*
