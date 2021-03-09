@@ -55,7 +55,7 @@ const Chat = () => {
                   src="https://material-ui.com/static/images/avatar/1.jpg"
                 />
               </ListItemIcon>
-              <ListItemText primary="John Wick"></ListItemText>
+              <ListItemText primary="John Wick"/>
             </ListItem>
           </List>
           <Divider />
@@ -77,7 +77,7 @@ const Chat = () => {
                 />
               </ListItemIcon>
               <ListItemText primary="Remy Sharp">Remy Sharp</ListItemText>
-              <ListItemText secondary="online" align="right"></ListItemText>
+              <ListItemText secondary="online" align="right"/>
             </ListItem>
             <ListItem button key="Chatbot">
               <ListItemIcon>
@@ -117,10 +117,10 @@ const Chat = () => {
                   <ListItemText
                     align="left"
                     primary="Hey, I am Good! What about you ?"
-                  ></ListItemText>
+                  />
                 </Grid>
                 <Grid item xs={12}>
-                  <ListItemText align="left" secondary="09:31"></ListItemText>
+                  <ListItemText align="left" secondary="09:31"/>
                 </Grid>
               </Grid>
             </ListItem>
@@ -130,10 +130,10 @@ const Chat = () => {
                   <ListItemText
                     align="right"
                     primary="Cool. i am good, let's catch up!"
-                  ></ListItemText>
+                  />
                 </Grid>
                 <Grid item xs={12}>
-                  <ListItemText align="right" secondary="10:30"></ListItemText>
+                  <ListItemText align="right" secondary="10:30"/>
                 </Grid>
               </Grid>
             </ListItem>

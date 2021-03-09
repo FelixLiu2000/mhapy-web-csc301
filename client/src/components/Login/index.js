@@ -8,7 +8,7 @@ import './styles.css';
 
 class Login extends React.Component {
   state = {
-    username: '',
+    email: '',
     password: '',
     authError: false,
     errorText: '',
@@ -16,7 +16,7 @@ class Login extends React.Component {
 
   render() {
     const {
-      username,
+      email,
       password,
       authError,
       errorText,
@@ -30,10 +30,10 @@ class Login extends React.Component {
         <Grid container spacing={2}>
           <Grid item xs={12}>
             <TextField
-              name="username"
+              name="email"
               variant="outlined"
-              label="Username"
-              value={username}
+              label="email"
+              value={email}
               onChange={(e) => handleInput(e, this)}
               error={authError}
               helperText={authError === true ? errorText : ''}
