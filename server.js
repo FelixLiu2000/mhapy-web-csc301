@@ -18,18 +18,18 @@ app.use(bodyParser.urlencoded({extended: true}));
 const API_URL = 'http://' + process.env.API_URL + '/api';
 
 // A POST route to login the user
-app.post("/api/login", (req, res) => {
+app.post('/api/login', (req, res) => {
   const email = req.body.email || '';
   const password = req.body.password || '';
-  const body = { email: email, password: password };
+  const body = {email: email, password: password};
   // Get user account by email and password
   const request = new fetch.Request(API_URL + '/user/login', {
-    method: "POST",
+    method: 'POST',
     body: JSON.stringify(body),
     headers: {
-      "Accept": "application/json",
-      "Content-Type": "application/json"
-    }
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
   });
   // Send request
   fetch(request).then((apiRes) => {
@@ -41,19 +41,19 @@ app.post("/api/login", (req, res) => {
         } else {
           // Clean user data
           delete body.data['__v'];
-          const id = body.data["_id"];
-          delete body.data["_id"];
+          const id = body.data['_id'];
+          delete body.data['_id'];
           body.data.id = id;
           res.send(body.data);
         }
       } else {
-        return Promise.reject();
+        return Promise.reject(new Error());
       }
     }).catch(() => {
-      res.status(500).send('Internal Server Error');
+      res.status(500).send(new Error('Internal Server Error'));
     });
   }).catch(() => {
-    res.status(500).send('Internal Server Error');
+    res.status(500).send(new Error('Internal Server Error'));
   });
 });
 
