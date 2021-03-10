@@ -17,7 +17,7 @@ class App extends React.Component {
         <Switch>
           <Route
             exact
-            path={["/", '/chat']}
+            path={['/', '/chat']}
             render={(props) => <Login {...props} app={this} />}
           />
           {/* Default path*/}
