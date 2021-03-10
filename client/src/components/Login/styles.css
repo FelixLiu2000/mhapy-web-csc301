@@ -1,3 +1,16 @@
 .MuiTypography-root.login__header {
+  margin: 50px 0px;
+  align-self: center;
+}
+
+.logo {
+  align-items: center;
+  display: flex;
   margin: 25px 0px;
+}
+
+.logo__img {
+  width: 300px;
+  height: 300px;
+  margin: auto;
 }

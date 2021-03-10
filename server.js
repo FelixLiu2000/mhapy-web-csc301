@@ -43,11 +43,17 @@ app.post('/api/login', (req, res) => {
                   res.status(401).send('Invalid username or password.');
                 } else {
                   // Clean user data
-                  delete body.data['__v'];
-                  const id = body.data['_id'];
-                  delete body.data['_id'];
-                  body.data.id = id;
-                  res.send(body.data);
+                  const userData = {
+                    id: body.data['_id'],
+                    username: body.data['user_name'],
+                    email: body.data['email'],
+                    bio: body.data['bio'],
+                    img: body.data['img'],
+                    token: body.data['token'],
+                    created: body.data['created'],
+                  };
+
+                  res.send(userData);
                 }
               } else {
                 return Promise.reject(new Error());

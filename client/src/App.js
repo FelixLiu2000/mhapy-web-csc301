@@ -5,6 +5,22 @@ import {Route, Switch, BrowserRouter} from 'react-router-dom';
 // Import components
 import Chat from './components/Chat';
 import Login from './components/Login';
+import {createMuiTheme, ThemeProvider} from '@material-ui/core/styles';
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#388e3c',
+      light: '#6abf69',
+      dark: '#00600f',
+    },
+    secondary: {
+      main: '#c8e6c9',
+      light: '#fbfffc',
+      dark: '#97b498',
+    },
+  },
+});
 
 class App extends React.Component {
   state = {
@@ -15,11 +31,13 @@ class App extends React.Component {
     return (
       <BrowserRouter>
         <Switch>
-          <Route
-            exact
-            path={['/', '/chat']}
-            render={(props) => <Login {...props} app={this} />}
-          />
+          <ThemeProvider theme={theme}>
+            <Route
+              exact
+              path={['/', '/chat']}
+              render={(props) => <Login {...props} app={this} />}
+            />
+          </ThemeProvider>
           {/* Default path*/}
           <Route render={() => <h1>404 Not Found</h1>} />
         </Switch>
@@ -36,7 +54,9 @@ class App extends React.Component {
       return (
         <BrowserRouter>
           <Switch>
-            <Route exact path="/chat" component={Chat} />
+            <ThemeProvider theme={theme}>
+              <Route exact path={['/', '/chat']} component={Chat} />
+            </ThemeProvider>
             {/* Default path*/}
             <Route render={() => <h1>404 Not Found</h1>} />
           </Switch>
