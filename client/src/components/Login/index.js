@@ -12,15 +12,10 @@ class Login extends React.Component {
     password: '',
     authError: false,
     errorText: '',
-  }
+  };
 
   render() {
-    const {
-      email,
-      password,
-      authError,
-      errorText,
-    } = this.state;
+    const {email, password, authError, errorText} = this.state;
 
     return (
       <Container maxWidth="xs" component="div">

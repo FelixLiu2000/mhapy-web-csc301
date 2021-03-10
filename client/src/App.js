@@ -9,17 +9,19 @@ import Login from './components/Login';
 class App extends React.Component {
   state = {
     currentUser: null,
-  }
+  };
 
   unauthenticated() {
     return (
       <BrowserRouter>
         <Switch>
-          <Route exact path={['/', '/chat']}
+          <Route
+            exact
+            path={["/", '/chat']}
             render={(props) => <Login {...props} app={this} />}
           />
           {/* Default path*/}
-          <Route render={() => <h1>404 Not Found</h1>}/>
+          <Route render={() => <h1>404 Not Found</h1>} />
         </Switch>
       </BrowserRouter>
     );
@@ -34,9 +36,9 @@ class App extends React.Component {
       return (
         <BrowserRouter>
           <Switch>
-            <Route exact path='/chat' component={Chat}/>
+            <Route exact path="/chat" component={Chat} />
             {/* Default path*/}
-            <Route render={() => <h1>404 Not Found</h1>}/>
+            <Route render={() => <h1>404 Not Found</h1>} />
           </Switch>
         </BrowserRouter>
       );

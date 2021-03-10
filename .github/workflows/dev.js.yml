@@ -21,3 +21,9 @@ jobs:
 
       - name: Format using Prettier and ESLint
         run: npm run format
+
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v4.9.2
+        with:
+          commit_message: Dev CI - Apply formatting changes
+          branch: dev
