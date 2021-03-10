@@ -16,9 +16,6 @@ jobs:
           fetch-depth: 0
           ref: main
 
-      - name: Install dependencies
-        run: npm run ci-setup
-
       - name: Format using Prettier and ESLint
         run: npm run format
 
