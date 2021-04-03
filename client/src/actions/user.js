@@ -1,8 +1,6 @@
-
-
 // Send request to server to login a user
 export const login = async (user) => {
-  const url = "/api/login";
+  const url = "/auth/login";
   // Create request
   const request = new Request(url, {
     method: "POST",

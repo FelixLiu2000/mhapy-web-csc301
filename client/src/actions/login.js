@@ -1,4 +1,3 @@
-
 import { login } from "./user";
 
 export const handleInput = (event, form) => {
