@@ -3,7 +3,7 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: ['plugin:react/recommended', 'google'],
+  extends: ['plugin:react/recommended'],
   parser: 'babel-eslint',
   parserOptions: {
     ecmaFeatures: {
