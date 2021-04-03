@@ -1,23 +1,23 @@
-import './App.css';
-import React from 'react';
+import "./App.css";
+import React from "react";
 // Import react router
-import {Route, Switch, BrowserRouter} from 'react-router-dom';
+import { Route, Switch, BrowserRouter } from "react-router-dom";
 // Import components
-import Chat from './components/Chat';
-import Login from './components/Login';
-import {createMuiTheme, ThemeProvider} from '@material-ui/core/styles';
+import Chat from "./components/Chat";
+import Login from "./components/Login";
+import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#388e3c',
-      light: '#6abf69',
-      dark: '#00600f',
+      main: "#388e3c",
+      light: "#6abf69",
+      dark: "#00600f",
     },
     secondary: {
-      main: '#c8e6c9',
-      light: '#fbfffc',
-      dark: '#97b498',
+      main: "#c8e6c9",
+      light: "#fbfffc",
+      dark: "#97b498",
     },
   },
 });
@@ -34,7 +34,7 @@ class App extends React.Component {
           <ThemeProvider theme={theme}>
             <Route
               exact
-              path={['/', '/chat']}
+              path={["/", "/chat"]}
               render={(props) => <Login {...props} app={this} />}
             />
           </ThemeProvider>
@@ -55,7 +55,7 @@ class App extends React.Component {
         <BrowserRouter>
           <Switch>
             <ThemeProvider theme={theme}>
-              <Route exact path={['/', '/chat']} component={Chat} />
+              <Route exact path={["/", "/chat"]} component={Chat} />
             </ThemeProvider>
             {/* Default path*/}
             <Route render={() => <h1>404 Not Found</h1>} />

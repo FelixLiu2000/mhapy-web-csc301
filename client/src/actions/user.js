@@ -1,15 +1,15 @@
-'use strict';
+
 
 // Send request to server to login a user
 export const login = async (user) => {
-  const url = '/api/login';
+  const url = "/api/login";
   // Create request
   const request = new Request(url, {
-    method: 'POST',
+    method: "POST",
     body: JSON.stringify(user),
     headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
+      Accept: "application/json",
+      "Content-Type": "application/json",
     },
   });
   // Send request
@@ -20,13 +20,13 @@ export const login = async (user) => {
       if (userData !== undefined) {
         return userData;
       } else {
-        return Promise.reject(new Error('Login Response Empty'));
+        return Promise.reject(new Error("Login Response Empty"));
       }
     } else {
       if (res.status === 401) {
-        return Promise.reject(new Error('credentials'));
+        return Promise.reject(new Error("credentials"));
       }
-      return Promise.reject(new Error('Internal Server Error'));
+      return Promise.reject(new Error("Internal Server Error"));
     }
   } catch (error) {
     console.error(error);

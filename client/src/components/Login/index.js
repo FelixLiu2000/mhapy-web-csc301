@@ -1,23 +1,23 @@
-import React from 'react';
-import {Typography, Container} from '@material-ui/core';
-import Grid from '@material-ui/core/Grid';
-import TextField from '@material-ui/core/TextField';
-import {handleInput, handleLogin} from '../../actions/login';
-import Button from '@material-ui/core/Button';
-import './styles.css';
-import mhapyLogo from '../../assets/mhapy.png';
-import Box from '@material-ui/core/Box';
+import React from "react";
+import { Typography, Container } from "@material-ui/core";
+import Grid from "@material-ui/core/Grid";
+import TextField from "@material-ui/core/TextField";
+import { handleInput, handleLogin } from "../../actions/login";
+import Button from "@material-ui/core/Button";
+import "./styles.css";
+import mhapyLogo from "../../assets/mhapy.png";
+import Box from "@material-ui/core/Box";
 
 class Login extends React.Component {
   state = {
-    email: '',
-    password: '',
+    email: "",
+    password: "",
     authError: false,
-    errorText: '',
+    errorText: "",
   };
 
   render() {
-    const {email, password, authError, errorText} = this.state;
+    const { email, password, authError, errorText } = this.state;
 
     return (
       <Container maxWidth="xs" component="div">
@@ -37,7 +37,7 @@ class Login extends React.Component {
                 value={email}
                 onChange={(e) => handleInput(e, this)}
                 error={authError}
-                helperText={authError === true ? errorText : ''}
+                helperText={authError === true ? errorText : ""}
                 fullWidth
               />
             </Grid>
@@ -49,7 +49,7 @@ class Login extends React.Component {
                 type="password"
                 value={password}
                 error={authError}
-                helperText={authError === true ? errorText : ''}
+                helperText={authError === true ? errorText : ""}
                 onChange={(e) => handleInput(e, this)}
                 fullWidth
               />
@@ -67,7 +67,7 @@ class Login extends React.Component {
             </Grid>
             <Grid item xs={12}>
               <Typography color="error" variant="subtitle2" align="center">
-                {authError ? '' : errorText}
+                {authError ? "" : errorText}
               </Typography>
             </Grid>
           </Grid>
