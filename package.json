@@ -8,7 +8,7 @@
     "setup": "npm install && cd client && npm install && cd ..",
     "ci-setup": "npm ci && cd client && npm ci && cd ..",
     "build-run": "cd client && npm run build && cd .. && node server.js",
-    "heroku-postbuild": "cd client && npm install && npm run build",
+    "heroku-postbuild": "npm ci && cd client && npm ci && npm run build",
     "start": "node server.js",
     "format": "prettier --write . && eslint . --fix && cd client && eslint . --fix && cd .."
   },
@@ -24,7 +24,10 @@
   "homepage": "https://github.com/csc301-winter-2021/team-project-17-mhapy#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "node-fetch": "^2.6.1",
+    "react-router-dom": "^5.2.0"
   },
   "devDependencies": {
     "eslint": "^7.21.0",
