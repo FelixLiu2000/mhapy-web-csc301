@@ -3,7 +3,7 @@ import React from "react";
 // Import react router
 import { Route, Switch, BrowserRouter } from "react-router-dom";
 // Import components
-import ChatShell from "./components/Chat";
+import Chat from "./components/Chat";
 import Login from "./components/Login";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 
@@ -55,7 +55,7 @@ class App extends React.Component {
         <BrowserRouter>
           <Switch>
             <ThemeProvider theme={theme}>
-              <Route exact path={["/", "/chat"]} component={ChatShell} />
+              <Route exact path={["/", "/chat"]} component={Chat} />
             </ThemeProvider>
             {/* Default path*/}
             <Route render={() => <h1>404 Not Found</h1>} />
