@@ -7,7 +7,7 @@ export const messages = [
     isMyMessage: true,
   },
   {
-    imageUrl: require("../assets/profiles/daryl.png"),
+    imageUrl: '',
     imageAlt: "Daryl Duckmanton",
     messageText: `
             Yeah I think it's best we do that. Otherwise things won't work well at all. 
@@ -25,7 +25,7 @@ export const messages = [
     isMyMessage: true,
   },
   {
-    imageUrl: require("../assets/profiles/daryl.png"),
+    imageUrl: '',
     imageAlt: "Daryl Duckmanton",
     messageText: `
             All I know is where I live it's too hard
@@ -45,7 +45,7 @@ export const messages = [
     isMyMessage: true,
   },
   {
-    imageUrl: require("../assets/profiles/daryl.png"),
+    imageUrl: '',
     imageAlt: "Daryl Duckmanton",
     messageText: `
             I'm just in the process of finishing off the
@@ -62,7 +62,7 @@ export const messages = [
     isMyMessage: true,
   },
   {
-    imageUrl: require("../assets/profiles/daryl.png"),
+    imageUrl: '',
     imageAlt: "Daryl Duckmanton",
     messageText: " Hey mate what's up?",
     createdAt: "Apr 13",
