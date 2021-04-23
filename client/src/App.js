@@ -57,8 +57,11 @@ class App extends React.Component {
           <Switch>
             <ThemeProvider theme={theme}>
               <Route exact path={["/chat"]} component={ChatShell} />
-              <Route exact path={["/"]}
-                     render={(props) => <Home {...props} app={this} />} />
+              <Route
+                exact
+                path={["/"]}
+                render={(props) => <Home {...props} app={this} />}
+              />
             </ThemeProvider>
             {/* Default path*/}
             <Route render={() => <h1>404 Not Found</h1>} />
