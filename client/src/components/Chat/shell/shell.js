@@ -5,16 +5,16 @@ import NewConversation from '../conversation/new-conversation/new-conversation';
 import ChatTitle from '../chat-title/chat-title';
 import MessageList from '../message/message-list/message-list';
 import ChatForm from '../chat-send-form/Chat-Send-Form';
-// import { conversations, selectedConversation } from '../../../sample-data/conversations';
+import { conversations, selectedConversation } from '../../../sample-data/conversations';
 import { messages } from '../../../sample-data/messages';
 
-import './shell.css';
+import "./shell.css";
 
 const initialState = {
     conversations: [
         { 
             id: '1',
-            imageUrl: require('../../images/profiles/daryl.png'),
+            imageUrl: require('../../../assets/profiles/daryl.png'),
             imageAlt: 'Daryl Duckmanton',
             title: 'Daryl Duckmanton',
             createdAt: 'Apr 16',
@@ -28,7 +28,7 @@ const initialState = {
                     isMyMessage: true
                 },
                 {
-                    imageUrl: require('../../images/profiles/daryl.png'),
+                    imageUrl: require('../../../assets/profiles/daryl.png'),
                     imageAlt: 'Daryl Duckmanton',
                     messageText: `
                         Yeah I think it's best we do that. Otherwise things won't work well at all. 
@@ -46,7 +46,7 @@ const initialState = {
                     isMyMessage: true
                 },
                 {
-                    imageUrl: require('../../images/profiles/daryl.png'),
+                    imageUrl: require('../../../assets/profiles/daryl.png'),
                     imageAlt: 'Daryl Duckmanton',
                     messageText: `
                         All I know is where I live it's too hard
@@ -66,7 +66,7 @@ const initialState = {
                     isMyMessage: true
                 },
                 {
-                    imageUrl: require('../../images/profiles/daryl.png'),
+                    imageUrl: require('../../../assets/profiles/daryl.png'),
                     imageAlt: 'Daryl Duckmanton',
                     messageText: `
                         I'm just in the process of finishing off the
@@ -83,7 +83,7 @@ const initialState = {
                     isMyMessage: true
                 },
                 {
-                    imageUrl: require('../../images/profiles/daryl.png'),
+                    imageUrl: require('../../../assets/profiles/daryl.png'),
                     imageAlt: 'Daryl Duckmanton',
                     messageText: ' Hey mate what\'s up?',
                     createdAt: 'Apr 13',
@@ -100,7 +100,7 @@ const initialState = {
         },
         {
             id: '2', 
-            imageUrl: require('../../images/profiles/kim.jpeg'),
+            imageUrl: require('../../../assets/profiles/kim.jpeg'),
             imageAlt: 'Kim O\'Neil',
             title: 'Kim O\'Neil',
             createdAt: 'Oct 20',
@@ -114,7 +114,7 @@ const initialState = {
                     isMyMessage: true
                 },
                 {
-                    imageUrl: require('../../images/profiles/kim.jpeg'),
+                    imageUrl: require('../../../assets/profiles/kim.jpeg'),
                     imageAlt: 'Kim O\'Neil',
                     messageText: `
                         Not sure exactly yet. It will be next year sometime. Probably late.
@@ -130,7 +130,7 @@ const initialState = {
                     isMyMessage: true
                 },
                 {
-                    imageUrl: require('../../images/profiles/kim.jpeg'),
+                    imageUrl: require('../../../assets/profiles/kim.jpeg'),
                     imageAlt: 'Kim O\'Neil',
                     messageText: `
                         Well I know you like doing that stuff. But honestly I think
@@ -151,7 +151,7 @@ const initialState = {
                     isMyMessage: true
                 },
                 {
-                    imageUrl: require('../../images/profiles/kim.jpeg'),
+                    imageUrl: require('../../../assets/profiles/kim.jpeg'),
                     imageAlt: 'Kim O\'Neil',
                     messageText: `
                         I've just been really busy at work myself, looking to get
@@ -168,7 +168,7 @@ const initialState = {
                     isMyMessage: true
                 },
                 {
-                    imageUrl: require('../../images/profiles/kim.jpeg'),
+                    imageUrl: require('../../../assets/profiles/kim.jpeg'),
                     imageAlt: 'Kim O\'Neil',
                     messageText: 'Hey!!!! Have not spoken to you for a while',
                     createdAt: 'Oct 19',
@@ -185,7 +185,7 @@ const initialState = {
         },
         {
             id: '3', 
-            imageUrl: require('../../images/profiles/john.jpeg'),
+            imageUrl: require('../../../assets/profiles/john.jpeg'),
             imageAlt: 'John Anderson',
             title: 'John Anderson',
             createdAt: '1 week ago',
@@ -202,7 +202,7 @@ const initialState = {
         },
         { 
             id: '4',
-            imageUrl: require('../../images/profiles/ben.png'),
+            imageUrl: require('../../../assets/profiles/ben.png'),
             imageAlt: 'Ben Smith',
             title: 'Ben Smith',
             createdAt: '2:49 PM',
@@ -219,7 +219,7 @@ const initialState = {
         },
         { 
             id: '5',
-            imageUrl: require('../../images/profiles/douglas.png'),
+            imageUrl: require('../../../assets/profiles/douglas.png'),
             imageAlt: 'Douglas Johannasen',
             title: 'Douglas Johannasen',
             createdAt: '6:14 PM',
@@ -236,7 +236,7 @@ const initialState = {
         },
         { 
             id: '6',
-            imageUrl: require('../../images/profiles/jacob.png'),
+            imageUrl: require('../../../assets/profiles/jacob.png'),
             imageAlt: 'Jacob Manly',
             title: 'Jacob Manly',
             createdAt: '3 secs ago',
@@ -253,7 +253,7 @@ const initialState = {
         },
         { 
             id: '7',
-            imageUrl: require('../../images/profiles/stacey.jpeg'),
+            imageUrl: require('../../../assets/profiles/stacey.jpeg'),
             imageAlt: 'Stacey Wilson',
             title: 'Stacey Wilson',
             createdAt: '30 mins ago',
@@ -270,7 +270,7 @@ const initialState = {
         },
         { 
             id: '8',
-            imageUrl: require('../../images/profiles/stan.jpeg'),
+            imageUrl: require('../../../assets/profiles/stan.jpeg'),
             imageAlt: 'Stan George',
             title: 'Stan George',
             createdAt: '1 week ago',
@@ -287,7 +287,7 @@ const initialState = {
         },
         { 
             id: '9',
-            imageUrl: require('../../images/profiles/sarah.jpeg'),
+            imageUrl: require('../../../assets/profiles/sarah.jpeg'),
             imageAlt: 'Sarah Momes',
             title: 'Sarah Momes',
             createdAt: '1 year ago',
@@ -329,10 +329,12 @@ class ChatShell extends React.Component {
             },
         )
 
-        this.setState((state) => {
-            return {};
+        this.setState({
+            initialConv: newState,
         });
     }
+
+    // TODO: figure out how to incorporate sendNewMessage to 'child component' chat-send-form
 
     render() {
         return (
@@ -349,6 +351,8 @@ class ChatShell extends React.Component {
 
 
 }
+
+// old version
 
 // const ChatShell = () => {
 //     return (

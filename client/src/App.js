@@ -6,6 +6,7 @@ import { Route, Switch, BrowserRouter } from "react-router-dom";
 import ChatShell from "./components/Chat";
 import Login from "./components/Login";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import Home from "./components/Home";
 
 const theme = createMuiTheme({
   palette: {
@@ -55,7 +56,9 @@ class App extends React.Component {
         <BrowserRouter>
           <Switch>
             <ThemeProvider theme={theme}>
-              <Route exact path={["/", "/chat"]} component={ChatShell} />
+              <Route exact path={["/chat"]} component={ChatShell} />
+              <Route exact path={["/"]}
+                     render={(props) => <Home {...props} app={this} />} />
             </ThemeProvider>
             {/* Default path*/}
             <Route render={() => <h1>404 Not Found</h1>} />
