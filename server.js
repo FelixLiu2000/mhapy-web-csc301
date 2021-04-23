@@ -47,14 +47,15 @@ const authMiddleware = (req, res, next) => {
 // Used for forwarding messages to MHAPy backend
 const { createProxyMiddleware } = require("http-proxy-middleware");
 // Forward websocket to MHAPy backend
-app.use(SOCKET_ROUTE,
+app.use(
+  SOCKET_ROUTE,
   authMiddleware,
-  createProxyMiddleware({ target: BACKEND_URL, changeOrigin: true, ws: true }));
+  createProxyMiddleware({ target: BACKEND_URL, changeOrigin: true, ws: true })
+);
 // Parses HTTP JSON body into JS object
 const bodyParser = require("body-parser");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
 
 // POST route, login user
 app.post("/auth/login", (req, res) => {
