@@ -1,3 +1,3 @@
-import ChatShell from '../Chat/shell/shell';
+import ChatShell from "../Chat/shell/shell";
 
 export default ChatShell;

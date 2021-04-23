@@ -1,5 +1,5 @@
 #conversation-list {
-    grid-area: conversation-list;
-    background: #0048AA;
-    overflow-y: scroll;
+  grid-area: conversation-list;
+  background: #0048aa;
+  overflow-y: scroll;
 }
