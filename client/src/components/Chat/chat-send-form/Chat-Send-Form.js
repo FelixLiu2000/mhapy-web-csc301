@@ -33,10 +33,7 @@ class ChatForm extends React.Component {
   render() {
     return (
       <form id="chat-form" onSubmit={this.handleSubmit}>
-        <img
-          src=''
-          alt="Add Attachment"
-        />
+        <img src="" alt="Add Attachment" />
         <input
           type="text"
           placeholder="type a message"
