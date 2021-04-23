@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './chat-title.css';
+import './Chat-title.css';
 
 const ChatTitle = (props) => {
     return (

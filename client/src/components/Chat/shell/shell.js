@@ -23,4 +23,8 @@ const ChatShell = () => {
     );
 }
 
+// const mapDispatchToProps = dispatch => ({
+//     onMessageSubmitted: messageText => { dispatch(newMessageAdded(messageText));}
+// });
+
 export default ChatShell;
