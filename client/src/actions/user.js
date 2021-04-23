@@ -1,3 +1,5 @@
+import io from "socket.io-client";
+
 // Send request to server to login a user
 export const login = async (user) => {
   const url = "/auth/login";
@@ -30,4 +32,20 @@ export const login = async (user) => {
     console.error(error);
     return Promise.reject(error);
   }
+};
+
+// Connect to general websocket
+export const connectSocket = (uid) => {
+  const socket = io({
+    reconnection: false,
+    transportOptions: { withCredentials: true },
+  });
+  socket.on("connect", () => {
+    console.log("[SOCKET] Connected");
+    socket.emit("goOnline", uid);
+    console.log("[SOCKET] User Online");
+  });
+  socket.on("connect_error", () => {
+    console.error("[SOCKET] Connection refused");
+  });
 };
