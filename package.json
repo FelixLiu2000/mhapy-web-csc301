@@ -1,6 +1,6 @@
 {
   "name": "mhapy-web",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A web interface for the mental health application, MHAPy.",
   "main": "server.js",
   "scripts": {

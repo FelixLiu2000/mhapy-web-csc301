@@ -9,8 +9,8 @@ export const login = async (user) => {
     body: JSON.stringify(user),
     headers: {
       Accept: "application/json",
-      "Content-Type": "application/json"
-    }
+      "Content-Type": "application/json",
+    },
   });
   // Send request
   try {
@@ -36,7 +36,10 @@ export const login = async (user) => {
 
 // Connect to general websocket
 export const connectSocket = (uid) => {
-  const socket = io({ reconnection: false, transportOptions: { withCredentials: true } });
+  const socket = io({
+    reconnection: false,
+    transportOptions: { withCredentials: true },
+  });
   socket.on("connect", () => {
     console.log("[SOCKET] Connected");
     socket.emit("goOnline", uid);

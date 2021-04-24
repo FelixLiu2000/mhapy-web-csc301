@@ -313,6 +313,7 @@ class ChatShell extends React.Component {
         this.state = {
             initialConv: initialState
         };
+        this.sendNewMessage = this.sendNewMessage.bind(this);
     }
 
     sendNewMessage(convoState) {

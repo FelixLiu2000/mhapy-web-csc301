@@ -33,10 +33,7 @@ class ChatForm extends React.Component {
   render() {
     return (
       <form id="chat-form" onSubmit={this.handleSubmit}>
-        <img
-          src={require("../../../assets/icons/attachment-logo.svg")}
-          alt="Add Attachment"
-        />
+        <img src="" alt="Add Attachment" />
         <input
           type="text"
           placeholder="type a message"

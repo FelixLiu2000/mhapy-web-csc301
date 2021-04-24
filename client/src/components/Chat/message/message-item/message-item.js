@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./message-item.css";
+// import "./message-item.css";
 
 const Message = (props) => {
   let messageClass = "message-row";
