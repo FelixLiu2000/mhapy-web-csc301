@@ -41,17 +41,18 @@ router.post("/login", async (req, res) => {
 router.post("/logout", (req, res) => {
   let success = true;
   if (req.session) {
-    req.session.destroy((error) => {
-      if (error) {
-        // Logout failed
-        res.status(500).send("Internal Server Error");
-        success = false;
-      }
-    });
+    // Destroy the session
+    try {
+      req.session = null;
+    } catch {
+      success = false;
+    }
   }
   // Logout succeeded or session not found
   if (success) {
     res.send();
+  } else {
+    res.status(500).send("Internal Server Error");
   }
 });
 
