@@ -5,7 +5,6 @@ import NewConversation from "../conversation/new-conversation/new-conversation";
 import ChatTitle from "../chat-title/chat-title";
 import MessageList from "../message/message-list/message-list";
 import ChatForm from "../chat-send-form/Chat-Send-Form";
-
 import "./shell.css";
 
 const initialState = {
