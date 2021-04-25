@@ -6,7 +6,6 @@ import ChatTitle from '../chat-title/chat-title';
 import MessageList from '../message/message-list/message-list';
 import ChatForm from '../chat-send-form/Chat-Send-Form';
 import { conversations, selectedConversation } from '../../../sample-data/conversations';
-import { messages } from '../../../sample-data/messages';
 
 import "./shell.css";
 
@@ -321,9 +320,9 @@ class ChatShell extends React.Component {
     sendNewMessage(textMessage) {
         const newState = { ...this.state.initialConv};
         newState.selectedConversation = { ...newState.selectedConversation};
-        console.log(textMessage);
-        console.log(newState);
-        console.log(newState.selectedConversation);
+        // console.log(textMessage);
+        // console.log(newState);
+        // console.log(newState.selectedConversation);
 
         newState.selectedConversation.messages.unshift(
             {
@@ -335,13 +334,13 @@ class ChatShell extends React.Component {
             },
         )
 
-        console.log(newState.selectedConversation);
+        // console.log(newState.selectedConversation);
 
         this.setState({
             initialConv: newState,
         });
 
-        console.log(this.state.initialConv);
+        // console.log(this.state.initialConv);
     }
 
     // TODO: figure out how to incorporate sendNewMessage to 'child component' chat-send-form
@@ -350,7 +349,10 @@ class ChatShell extends React.Component {
         return (
             <div id="chat-container">
             <ConversationSearch />
-            <ConversationList conversations={conversations} />
+            <ConversationList 
+                onConversationItemSelected={conversationChanged}
+                conversations={conversations}
+                selectedConversationId={selectedConversation.id} />
             <NewConversation />
             <ChatTitle selectedConversation={selectedConversation} />
             <MessageList messages={this.state.initialConv.selectedConversation.messages} />
