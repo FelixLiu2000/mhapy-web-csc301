@@ -2,7 +2,7 @@ import io from "socket.io-client";
 
 // Send request to server to login a user
 export const login = async (user) => {
-  const url = "/auth/login";
+  const url = "/api/auth/login";
   // Create request
   const request = new Request(url, {
     method: "POST",

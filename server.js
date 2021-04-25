@@ -1,20 +1,20 @@
 "use strict";
 
-// API URL
-const BACKEND_URL = "https://" + process.env.API_URL;
-const API_URL = BACKEND_URL + "/api";
-
 // Message socket route on backend server
 const SOCKET_ROUTE = "/socket.io";
+// API route on this server
+const API_ROUTE = "/api";
+
+// API URLs
+const BACKEND_URL = "https://" + process.env.API_URL;
+const API_URL = BACKEND_URL + API_ROUTE;
 
 // Express
 const express = require("express");
 const app = express();
 
-// Fetch API for Node
-const fetch = require("node-fetch");
+/** Middleware **/
 
-// Middleware
 // User sessions for authentication
 const session = require("cookie-session");
 // Create a session cookie
@@ -22,10 +22,8 @@ const sess = {
   secret: process.env.SESS_SECRET,
   resave: false,
   saveUninitialized: false,
-  cookie: {
-    maxAge: 60 * 60000, // Expires in 60 mins
-    httpOnly: true
-  }
+  maxAge: 60 * 60000, // Cookie expires in 60 mins
+  httpOnly: true,
 };
 if (app.get("env") === "production") {
   app.set("trust proxy", 1); // trust first proxy
@@ -36,8 +34,13 @@ app.use(session(sess));
 // Authentication middleware
 const authMiddleware = (req, res, next) => {
   if (!req.session || !req.session.user) {
-    console.error("[SOCKET] WebSocket Auth Error");
-    res.status(401).send("Not logged in");
+    if (req.baseUrl === SOCKET_ROUTE) {
+      console.error("[SOCKET] WebSocket Auth Error");
+    } else if (req.baseUrl === API_ROUTE) {
+      console.error(`[API] Unauthorized attempt to ${req.method} at
+       ${req.baseUrl + req.path}`);
+    }
+    res.status(401).send("Unauthorized, not logged in");
   } else {
     next();
   }
@@ -57,80 +60,22 @@ const bodyParser = require("body-parser");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// POST route, login user
-app.post("/auth/login", (req, res) => {
-  const email = req.body.email || "";
-  const password = req.body.password || "";
-  const body = { email: email, password: password };
-  // Get user account by email and password
-  const request = new fetch.Request(API_URL + "/user/login", {
-    method: "POST",
-    body: JSON.stringify(body),
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json"
-    }
-  });
-  // Send request
-  fetch(request)
-    .then((apiRes) => {
-      // Parse response as json
-      apiRes
-        .json()
-        .then((body) => {
-          if (body !== undefined) {
-            if (body.error) {
-              res.status(401).send("Invalid username or password.");
-            } else {
-              // Clean user data
-              const userData = {
-                id: body.data["_id"],
-                username: body.data["user_name"],
-                email: body.data["email"],
-                bio: body.data["bio"],
-                img: body.data["img"],
-                token: body.data["token"],
-                created: body.data["created"]
-              };
-              req.session.user = userData.id;
-              req.session.save();
-              res.send(userData);
-            }
-          } else {
-            return Promise.reject(new Error());
-          }
-        })
-        .catch(() => {
-          res.status(500).send(new Error("Internal Server Error"));
-        });
-    })
-    .catch(() => {
-      res.status(500).send(new Error("Internal Server Error"));
-    });
-});
+// Exports
+module.exports = {
+  API_URL,
+  authMiddleware,
+};
 
-// POST route, logout user
-app.post("/auth/logout", (req, res) => {
-  let success = true;
-  if (req.session) {
-    req.session.destroy((error) => {
-      if (error) {
-        // Logout failed
-        res.status(500).send("Internal Server Error");
-        success = false;
-      }
-    });
-  }
-  // Logout succeeded or session not found
-  if (success) {
-    res.send();
-  }
-});
+/** Routes **/
 
+// API routes
+const apiRouter = require("./routes");
+app.use("/api", apiRouter);
+
+// Serve static files
 app.use(express.static(__dirname + "/client/build"));
-// Serve index.html
+// Serve index.html (React client)
 app.get("*", (req, res) => {
-  // Serve index.html
   res.sendFile(__dirname + "/client/build/index.html");
 });
 
@@ -138,5 +83,3 @@ const port = process.env.PORT || 4000;
 app.listen(port, () => {
   console.log(`Listening on port ${port}...`);
 });
-
-module.exports = {};
