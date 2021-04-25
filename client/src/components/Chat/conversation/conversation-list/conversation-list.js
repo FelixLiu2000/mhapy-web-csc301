@@ -19,10 +19,7 @@ const ConversationList = ({
     );
   });
 
-  return (<div id="conversation-list">
-            {conversationItems}
-          </div>
-  );
+  return <div id="conversation-list">{conversationItems}</div>;
 };
 
 export default ConversationList;

@@ -5,11 +5,6 @@ import NewConversation from "../conversation/new-conversation/new-conversation";
 import ChatTitle from "../chat-title/chat-title";
 import MessageList from "../message/message-list/message-list";
 import ChatForm from "../chat-send-form/Chat-Send-Form";
-import {
-  conversations,
-  selectedConversation,
-} from "../../../sample-data/conversations";
-import { messages } from "../../../sample-data/messages";
 
 import "./shell.css";
 
@@ -312,65 +307,69 @@ const initialState = {
 initialState.selectedConversation = initialState.conversations[0]; //maybe should be based on id?
 
 class ChatShell extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            initialConv: initialState
-        };
-        this.sendNewMessage = this.sendNewMessage.bind(this);
-        this.changeConversation = this.changeConversation.bind(this);
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      initialConv: initialState,
+    };
+    this.sendNewMessage = this.sendNewMessage.bind(this);
+    this.changeConversation = this.changeConversation.bind(this);
+  }
 
-    changeConversation(conversationID) {
-        const newState = { ...this.state.initialConv};
-        newState.selectedConversation = newState.conversations.find(
-            convo => convo.id === conversationID
-        );
+  changeConversation(conversationID) {
+    const newState = { ...this.state.initialConv };
+    newState.selectedConversation = newState.conversations.find(
+      (convo) => convo.id === conversationID
+    );
 
-        this.setState({
-            initialConv: newState,
-         });
-    }
+    this.setState({
+      initialConv: newState,
+    });
+  }
 
-    sendNewMessage(textMessage) {
-        const newState = { ...this.state.initialConv};
-        newState.selectedConversation = { ...newState.selectedConversation};
-        // console.log(textMessage);
-        // console.log(newState);
-        // console.log(newState.selectedConversation);
+  sendNewMessage(textMessage) {
+    const newState = { ...this.state.initialConv };
+    newState.selectedConversation = { ...newState.selectedConversation };
+    // console.log(textMessage);
+    // console.log(newState);
+    // console.log(newState.selectedConversation);
 
-        newState.selectedConversation.messages.unshift(
-            {
-                imageUrl: null,
-                imageAlt: null,
-                messageText: textMessage, 
-                createdAt: 'Apr 16', // todo: change to current date time
-                isMyMessage: true
-            },
-        )
+    newState.selectedConversation.messages.unshift({
+      imageUrl: null,
+      imageAlt: null,
+      messageText: textMessage,
+      createdAt: "Apr 16", // todo: change to current date time
+      isMyMessage: true,
+    });
 
-        this.setState({
-            initialConv: newState,
-         });
-        // console.log(this.state.initialConv);
-    }
+    this.setState({
+      initialConv: newState,
+    });
+    // console.log(this.state.initialConv);
+  }
 
-    render() {
-        return (
-            <div id="chat-container">
-            <ConversationSearch />
-            <ConversationList 
-                onConversationItemSelected={this.changeConversation}
-                conversations={this.state.initialConv.conversations}
-                selectedConversationId={this.state.initialConv.selectedConversation.id} />
-            <NewConversation />
-            <ChatTitle selectedConversation={this.state.initialConv.selectedConversation} />
-            <MessageList messages={this.state.initialConv.selectedConversation.messages} />
-            <ChatForm onNewMessage = {this.sendNewMessage}/>
-            </div>
-        );
-    }
-
+  render() {
+    return (
+      <div id="chat-container">
+        <ConversationSearch />
+        <ConversationList
+          onConversationItemSelected={this.changeConversation}
+          conversations={this.state.initialConv.conversations}
+          selectedConversationId={
+            this.state.initialConv.selectedConversation.id
+          }
+        />
+        <NewConversation />
+        <ChatTitle
+          selectedConversation={this.state.initialConv.selectedConversation}
+        />
+        <MessageList
+          messages={this.state.initialConv.selectedConversation.messages}
+        />
+        <ChatForm onNewMessage={this.sendNewMessage} />
+      </div>
+    );
+  }
 }
 
 // old version
