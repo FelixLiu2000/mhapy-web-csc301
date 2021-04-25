@@ -14,7 +14,7 @@ const initialState = {
     conversations: [
         { 
             id: '1',
-            imageUrl: require('../../../assets/profiles/daryl.png'),
+            imageUrl: "",
             imageAlt: 'Daryl Duckmanton',
             title: 'Daryl Duckmanton',
             createdAt: 'Apr 16',
@@ -28,7 +28,7 @@ const initialState = {
                     isMyMessage: true
                 },
                 {
-                    imageUrl: require('../../../assets/profiles/daryl.png'),
+                    imageUrl: "",
                     imageAlt: 'Daryl Duckmanton',
                     messageText: `
                         Yeah I think it's best we do that. Otherwise things won't work well at all. 
@@ -46,7 +46,7 @@ const initialState = {
                     isMyMessage: true
                 },
                 {
-                    imageUrl: require('../../../assets/profiles/daryl.png'),
+                    imageUrl: "",
                     imageAlt: 'Daryl Duckmanton',
                     messageText: `
                         All I know is where I live it's too hard
@@ -66,7 +66,7 @@ const initialState = {
                     isMyMessage: true
                 },
                 {
-                    imageUrl: require('../../../assets/profiles/daryl.png'),
+                    imageUrl: "",
                     imageAlt: 'Daryl Duckmanton',
                     messageText: `
                         I'm just in the process of finishing off the
@@ -83,7 +83,7 @@ const initialState = {
                     isMyMessage: true
                 },
                 {
-                    imageUrl: require('../../../assets/profiles/daryl.png'),
+                    imageUrl: "",
                     imageAlt: 'Daryl Duckmanton',
                     messageText: ' Hey mate what\'s up?',
                     createdAt: 'Apr 13',
@@ -100,7 +100,7 @@ const initialState = {
         },
         {
             id: '2', 
-            imageUrl: require('../../../assets/profiles/kim.jpeg'),
+            imageUrl: "",
             imageAlt: 'Kim O\'Neil',
             title: 'Kim O\'Neil',
             createdAt: 'Oct 20',
@@ -114,7 +114,7 @@ const initialState = {
                     isMyMessage: true
                 },
                 {
-                    imageUrl: require('../../../assets/profiles/kim.jpeg'),
+                    imageUrl: "",
                     imageAlt: 'Kim O\'Neil',
                     messageText: `
                         Not sure exactly yet. It will be next year sometime. Probably late.
@@ -130,7 +130,7 @@ const initialState = {
                     isMyMessage: true
                 },
                 {
-                    imageUrl: require('../../../assets/profiles/kim.jpeg'),
+                    imageUrl: "",
                     imageAlt: 'Kim O\'Neil',
                     messageText: `
                         Well I know you like doing that stuff. But honestly I think
@@ -151,7 +151,7 @@ const initialState = {
                     isMyMessage: true
                 },
                 {
-                    imageUrl: require('../../../assets/profiles/kim.jpeg'),
+                    imageUrl: "",
                     imageAlt: 'Kim O\'Neil',
                     messageText: `
                         I've just been really busy at work myself, looking to get
@@ -168,7 +168,7 @@ const initialState = {
                     isMyMessage: true
                 },
                 {
-                    imageUrl: require('../../../assets/profiles/kim.jpeg'),
+                    imageUrl: "",
                     imageAlt: 'Kim O\'Neil',
                     messageText: 'Hey!!!! Have not spoken to you for a while',
                     createdAt: 'Oct 19',
@@ -185,7 +185,7 @@ const initialState = {
         },
         {
             id: '3', 
-            imageUrl: require('../../../assets/profiles/john.jpeg'),
+            imageUrl: "",
             imageAlt: 'John Anderson',
             title: 'John Anderson',
             createdAt: '1 week ago',
@@ -202,7 +202,7 @@ const initialState = {
         },
         { 
             id: '4',
-            imageUrl: require('../../../assets/profiles/ben.png'),
+            imageUrl: "",
             imageAlt: 'Ben Smith',
             title: 'Ben Smith',
             createdAt: '2:49 PM',
@@ -219,7 +219,7 @@ const initialState = {
         },
         { 
             id: '5',
-            imageUrl: require('../../../assets/profiles/douglas.png'),
+            imageUrl: "",
             imageAlt: 'Douglas Johannasen',
             title: 'Douglas Johannasen',
             createdAt: '6:14 PM',
@@ -236,7 +236,7 @@ const initialState = {
         },
         { 
             id: '6',
-            imageUrl: require('../../../assets/profiles/jacob.png'),
+            imageUrl: "",
             imageAlt: 'Jacob Manly',
             title: 'Jacob Manly',
             createdAt: '3 secs ago',
@@ -253,7 +253,7 @@ const initialState = {
         },
         { 
             id: '7',
-            imageUrl: require('../../../assets/profiles/stacey.jpeg'),
+            imageUrl: "",
             imageAlt: 'Stacey Wilson',
             title: 'Stacey Wilson',
             createdAt: '30 mins ago',
@@ -270,7 +270,7 @@ const initialState = {
         },
         { 
             id: '8',
-            imageUrl: require('../../../assets/profiles/stan.jpeg'),
+            imageUrl: "",
             imageAlt: 'Stan George',
             title: 'Stan George',
             createdAt: '1 week ago',
@@ -287,7 +287,7 @@ const initialState = {
         },
         { 
             id: '9',
-            imageUrl: require('../../../assets/profiles/sarah.jpeg'),
+            imageUrl: "",
             imageAlt: 'Sarah Momes',
             title: 'Sarah Momes',
             createdAt: '1 year ago',
@@ -306,6 +306,8 @@ const initialState = {
     selectedConversation: {}
 };
 
+initialState.selectedConversation = initialState.conversations[0]; //maybe should be based on id?
+
 
 class ChatShell extends React.Component {
     constructor(props) {
@@ -316,23 +318,30 @@ class ChatShell extends React.Component {
         this.sendNewMessage = this.sendNewMessage.bind(this);
     }
 
-    sendNewMessage(convoState) {
-        const newState = { ...convoState};
+    sendNewMessage(textMessage) {
+        const newState = { ...this.state.initialConv};
         newState.selectedConversation = { ...newState.selectedConversation};
+        console.log(textMessage);
+        console.log(newState);
+        console.log(newState.selectedConversation);
 
         newState.selectedConversation.messages.unshift(
             {
                 imageUrl: null,
                 imageAlt: null,
-                messageText: action.textMessage,
+                messageText: textMessage, 
                 createdAt: 'Apr 16', // todo: change to current date time
                 isMyMessage: true
             },
         )
 
+        console.log(newState.selectedConversation);
+
         this.setState({
             initialConv: newState,
         });
+
+        console.log(this.state.initialConv);
     }
 
     // TODO: figure out how to incorporate sendNewMessage to 'child component' chat-send-form
@@ -344,8 +353,8 @@ class ChatShell extends React.Component {
             <ConversationList conversations={conversations} />
             <NewConversation />
             <ChatTitle selectedConversation={selectedConversation} />
-            <MessageList messages={messages} />
-            <ChatForm />
+            <MessageList messages={this.state.initialConv.selectedConversation.messages} />
+            <ChatForm onNewMessage = {this.sendNewMessage}/>
             </div>
         );
     }
