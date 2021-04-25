@@ -6,7 +6,7 @@ class ChatForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      textMessage: ''
+      textMessage: "",
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -18,7 +18,7 @@ class ChatForm extends React.Component {
     this.setState({
       textMessage: value,
     });
-  }
+  };
 
   handleSubmit(event) {
     event.preventDefault();
@@ -27,7 +27,7 @@ class ChatForm extends React.Component {
     this.props.onNewMessage(this.state.textMessage);
 
     this.setState({
-      textMessage: '',
+      textMessage: "",
     });
   }
 
@@ -39,7 +39,7 @@ class ChatForm extends React.Component {
           type="text"
           placeholder="type a message"
           value={this.state.textMessage}
-          onChange={event => this.handleChange(event)}
+          onChange={(event) => this.handleChange(event)}
         />
         <button type="submit">Send</button>
       </form>

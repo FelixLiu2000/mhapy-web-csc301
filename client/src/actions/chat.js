@@ -35,3 +35,9 @@ export const sendMessage = (form, user, receiverID, message) => {
   console.log("[CHAT] Message sent");
   // TODO: Update UI with new message
 };
+
+// Get messages from server by page from a given conversation
+export const getMessages = async (form, chatID, page) => {
+  const url = "/api/messages";
+  // TODO: Complete
+};
