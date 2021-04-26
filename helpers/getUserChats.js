@@ -11,7 +11,7 @@ const getUserChats = async (userID) => {
     // Non empty response body
     // Chats to return in response
     const resChats = {};
-    if (!(apiBody.error) && !(apiBody.data.error)) {
+    if (!apiBody.error && !apiBody.data.error) {
       // API body data does not contain error, create response body
       const rawChats = apiBody.data.data;
       for (const chat of rawChats) {
@@ -19,7 +19,7 @@ const getUserChats = async (userID) => {
         const lastMessage = {
           message: chat["lastMessage"]["message"],
           seenBy: chat["lastMessage"]["users_see_message"],
-          dateCreated: chat["updatedAt"] // same time as when chat was last updated
+          dateCreated: chat["updatedAt"], // same time as when chat was last updated
         };
         // The users added to this chat
         const users = [];
@@ -28,7 +28,7 @@ const getUserChats = async (userID) => {
           users.push({
             id: user["_id"],
             img: user["img"],
-            username: user["user_name"]
+            username: user["user_name"],
           });
         }
         const chatID = chat["_id"];
@@ -37,13 +37,13 @@ const getUserChats = async (userID) => {
         resChats[chatID] = {
           lastMessage: lastMessage,
           users: users,
-          dateCreated: dateCreated
+          dateCreated: dateCreated,
         };
       }
     }
     return resChats;
   }
   return null;
-}
+};
 
 module.exports = getUserChats;

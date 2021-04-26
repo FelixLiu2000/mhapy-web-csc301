@@ -38,7 +38,7 @@ router.get("/", async (req, res) => {
   const apiBody = await apiRequest(body, API_ROUTE);
   if (apiBody) {
     // Non empty response body
-    let messages = [];
+    const messages = [];
     if (!apiBody.error && Array.isArray(messages)) {
       for (const message of apiBody.data) {
         if (message["isDeleted"] === 0) {
@@ -51,7 +51,7 @@ router.get("/", async (req, res) => {
             dateCreated: new Date(message["created"] * 1000).toISOString(),
             sender: message["sender_id"],
             receiver: message["receiver_id"],
-          })
+          });
         }
       }
     }
