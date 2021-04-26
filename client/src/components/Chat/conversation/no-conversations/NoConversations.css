@@ -26,15 +26,3 @@ p {
 p:last-of-type {
   margin-bottom: 1.5rem;
 }
-
-#button {
-  flex: 0 0 auto;
-  background: #0048aa;
-  border: 1px solid #0048aa;
-  color: #ffffff;
-  padding: 12px;
-  border-radius: 5px;
-  font-size: 1.4rem;
-  cursor: pointer;
-  outline: none;
-}

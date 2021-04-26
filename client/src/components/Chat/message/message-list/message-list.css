@@ -62,3 +62,15 @@
   border: 1px solid #ddd;
   border-radius: 14px 14px 14px 0;
 }
+
+#load-button {
+  flex: 0 0 auto;
+  background: #0048AA;
+  border: 1px solid #0048AA;
+  color: #ffffff;
+  padding: 12px;
+  border-radius: 5px;
+  font-size: 1.4rem;
+  cursor: pointer;
+  outline: none;
+} 

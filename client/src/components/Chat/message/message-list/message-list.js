@@ -6,16 +6,6 @@ import "./message-list.css";
 class MessageList extends React.Component {
   render() {
 
-    // const chats = props.chats;
-    // const specificConvoIndex = props.specificConvo;
-    // const allMessages = [];
-
-    // for (chat in chats) {
-    //   if (chat === specificConvoIndex) {
-    //     allMessages = chat["messages"];
-    //   }
-    // }
-
     const messageItems = this.props.messages.map((message) => {
       return (
         <Message
@@ -28,7 +18,10 @@ class MessageList extends React.Component {
       );
     });
 
-    return <div id="chat-message-list">{messageItems}</div>;
+    return <div id="chat-message-list">
+              {messageItems}
+              <button className="load-button">{ "load more messages" }</button>              
+           </div>;
   }
 }
 

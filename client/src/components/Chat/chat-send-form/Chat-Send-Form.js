@@ -43,11 +43,7 @@ class ChatForm extends React.Component {
           value={this.state.textMessage}
           onChange={(event) => this.handleChange(event)}
         />
-        {
-          this.props.disabled ?
-            <button className={"button--disabled"} disabled>Send</button> :
-            <button type="submit">Send</button>
-        }
+        <button className="send-button">Send</button>   
       </form>
     );
   }
