@@ -43,7 +43,7 @@ class ChatForm extends React.Component {
           value={this.state.textMessage}
           onChange={(event) => this.handleChange(event)}
         />
-        <button className="send-button">Send</button>   
+        <button id="send-button">Send</button>   
       </form>
     );
   }
