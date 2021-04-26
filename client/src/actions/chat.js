@@ -29,12 +29,13 @@ export const sendMessage = (comp, user, receiverID, message) => {
     message: message,
     chat_id: chatID,
     message_type: 0,
-    img: "",
+    img: ""
   };
   // Emit socket event
   socket.emit("new_message", JSON.stringify(msg));
-  console.log(socket);
   console.log("[CHAT] Message sent");
+  // Add date stamp
+  msg.dateCreated = new Date();
   return msg;
 };
 
@@ -46,17 +47,34 @@ export const getMessages = (comp, chatID, page) => {
     method: "GET",
     headers: {
       Accept: "application/json",
-      "Content-Type": "application/json",
-    },
+      "Content-Type": "application/json"
+    }
   });
   // Send request
   fetch(request)
     .then((res) => {
       if (res.ok) {
         res.json().then((body) => {
+          // Check if more messages are available
+          const hasMoreMessages = body.messages.length > 0 && body.nextPage;
+          // Parse dates
+          for (const message of body.messages) {
+            message.dateCreated = new Date(message.dateCreated);
+          }
           // Set messages state
-          // FIXME: Change to correct state key
-          comp.setState({ currentMessages: body.messages });
+          if (page > 1) {
+            comp.setState((prevState) => ({
+              messagePage: page,
+              currentMessages: prevState.currentMessages.concat(body.messages),
+              hasMoreMessages: hasMoreMessages
+            }));
+          } else {
+            comp.setState(() => ({
+              messagePage: page,
+              currentMessages: body.messages,
+              hasMoreMessages: hasMoreMessages
+            }));
+          }
         });
       } else {
         if (res.status === 401) {
@@ -80,8 +98,8 @@ export const getChats = (comp, user) => {
     method: "GET",
     headers: {
       Accept: "application/json",
-      "Content-Type": "application/json",
-    },
+      "Content-Type": "application/json"
+    }
   });
   // Send request
   fetch(request)
@@ -104,10 +122,9 @@ export const getChats = (comp, user) => {
             const chatBDate = conversations[b].lastMessage.dateCreated;
             return chatADate < chatBDate ? 1 : -1;
           });
-          console.log(sortedIDs);
           comp.setState({
             conversations: conversations || {},
-            conversationIDs: sortedIDs || [],
+            conversationIDs: sortedIDs || []
           }, () => {
             // If current convo needs to be defined
             if (comp.state.currentConvoID === -1) {
@@ -128,3 +145,32 @@ export const getChats = (comp, user) => {
       console.error(error);
     });
 };
+
+// Get a formatted date time string for messages and conversations
+export const getDateTimeString = (rawDate) => {
+  const today = new Date();
+  const month = (rawDate.getMonth() + 1)
+    .toString()
+    .padStart(2, "0");
+  const date = rawDate.getDate().toString().padStart(2, "0");
+  const minute = rawDate
+    .getMinutes()
+    .toString()
+    .padStart(2, "0");
+  const year = rawDate
+    .getFullYear()
+    .toString();
+  let hour = rawDate.getHours();
+  const ampm = hour >= 12 ? 'PM' : 'AM';
+  hour = hour % 12;
+  hour = hour ? hour : 12; // convert hour '0' to '12'
+  let dateTimeString = `${month}/${date} at ${hour}:${minute} ${ampm}`;
+  if (today.getDate() === rawDate.getDate() &&
+    today.getMonth() === rawDate.getMonth() &&
+    today.getFullYear() === rawDate.getFullYear()) {
+    dateTimeString = `Today at ${hour}:${minute} ${ampm}`;
+  } else if (today.getFullYear() !== rawDate.getFullYear()) {
+    dateTimeString = `${year}/${month}/${date} at ${hour}:${minute} ${ampm}`;
+  }
+  return dateTimeString;
+}

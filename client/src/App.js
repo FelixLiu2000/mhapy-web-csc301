@@ -40,7 +40,6 @@ class App extends React.Component {
         // Request current user data
         getUser(userID)
           .then((userData) => {
-            console.log(userData);
             // Reassign user object
             this.setState({ currentUser: userData });
           })
@@ -52,7 +51,6 @@ class App extends React.Component {
           });
       })
       .catch(() => {
-        console.log("Not Logged In");
         // Force user to re-login
         this.setState({
           loggedIn: false

@@ -18,10 +18,16 @@ class MessageList extends React.Component {
       );
     });
 
-    return <div id="chat-message-list">
-              {messageItems}
-              <button id="load-button">{ "load more messages" }</button>              
-           </div>;
+    return (
+      <div id="chat-message-list">
+        {messageItems}
+        {
+          this.props.showLoadMore ?
+            <button id="load-button" onClick={this.props.onLoadMore}>{"load more messages"}</button> :
+            null
+        }
+      </div>
+    );
   }
 }
 

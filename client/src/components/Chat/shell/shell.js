@@ -32,8 +32,10 @@ class ChatShell extends React.Component {
     conversationIDs: [], // most recent at front, oldest at end
     currentConvoID: -1,
     currentMessages: [], // messages for the current conversation
+    messagePage: 1,
+    hasMoreMessages: false,
     conversationContent: <NoConversations/>,
-    socket: null, // WebSocket for messages
+    socket: null // WebSocket for messages
   };
 
   constructor(props) {
@@ -94,6 +96,12 @@ class ChatShell extends React.Component {
             messages={this.state.currentMessages}
             app={this.props.app}
             users={this.state.conversations[this.state.currentConvoID].users}
+            showLoadMore={this.state.hasMoreMessages}
+            onLoadMore={() => getMessages(
+              this,
+              this.state.currentConvoID,
+              this.state.messagePage + 1
+            )}
           />
         ) : (
           <NoConversations/>

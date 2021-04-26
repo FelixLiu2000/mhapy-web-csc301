@@ -2,6 +2,7 @@ import React from "react";
 import classNames from "classnames";
 
 import "./conversation-item.css";
+import { getDateTimeString } from "../../../../actions/chat";
 
 class ConversationItem extends React.Component {
   render() {
@@ -15,19 +16,7 @@ class ConversationItem extends React.Component {
       active: isActive,
     });
     const lastMessageDate = conversation.lastMessage.dateCreated;
-    const month = (lastMessageDate.getMonth() + 1)
-      .toString()
-      .padStart(2, "0");
-    const day = lastMessageDate.getDay().toString().padStart(2, "0");
-    const hour = lastMessageDate
-      .getHours()
-      .toString()
-      .padStart(2, "0");
-    const minute = lastMessageDate
-      .getMinutes()
-      .toString()
-      .padStart(2, "0");
-    const dateCreated = `${month}/${day} at ${hour}:${minute}`;
+    const dateCreated = getDateTimeString(lastMessageDate);
     return (
       <div
         className={className}

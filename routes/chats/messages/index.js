@@ -55,7 +55,11 @@ router.get("/", async (req, res) => {
         }
       }
     }
-    res.send({ messages: messages });
+    const response = { messages: messages }
+    if (apiBody.next) {
+      response.nextPage = apiBody.next.page;
+    }
+    res.send(response);
   } else {
     res.status(500).send(new Error("Internal Server Error"));
   }
