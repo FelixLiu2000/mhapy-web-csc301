@@ -56,7 +56,10 @@ class App extends React.Component {
         <BrowserRouter>
           <Switch>
             <ThemeProvider theme={theme}>
-              <Route exact path={["/chat"]} component={ChatShell} />
+              <Route
+                exact
+                path={["/chat"]}
+                render={(props) => <ChatShell {...props} app={this} />}></Route>
               <Route
                 exact
                 path={["/"]}

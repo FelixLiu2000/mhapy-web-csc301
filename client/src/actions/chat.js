@@ -41,3 +41,8 @@ export const getMessages = async (form, chatID, page) => {
   const url = "/api/messages";
   // TODO: Complete
 };
+
+export const getChats = async (form, user) => {
+  const url = "/api/messages";
+  // TODO: Complete
+};

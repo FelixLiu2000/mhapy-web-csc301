@@ -7,6 +7,7 @@ import ChatTitle from "../chat-title/chat-title";
 import MessageList from "../message/message-list/message-list";
 import ChatForm from "../chat-send-form/Chat-Send-Form";
 import "./shell.css";
+import {sendMessage, connectChat, getMessages, getChats} from "../../../actions/chat";
 
 const initialState = {
   conversations: [],
@@ -58,6 +59,9 @@ class ChatShell extends React.Component {
     this.setState({
       initialConv: newState,
     });
+
+    // sendMessage(this, this.props.app.state.currentUser, this.state.selectedConversation.userID, textMessage);
+
   }
 
   render() {
@@ -86,6 +90,13 @@ class ChatShell extends React.Component {
       </div>
     );
   }
+
+  // componentDidMount() {
+  //   connectChat(this);
+  //   const allChats = getChats(this, this.props.app.state.currentUser);
+
+  // }
+
 }
 
 // old version
