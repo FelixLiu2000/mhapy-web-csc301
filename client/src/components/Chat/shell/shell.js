@@ -7,60 +7,88 @@ import ChatTitle from "../chat-title/chat-title";
 import MessageList from "../message/message-list/message-list";
 import ChatForm from "../chat-send-form/Chat-Send-Form";
 import "./shell.css";
-import {sendMessage, connectChat, getMessages, getChats} from "../../../actions/chat";
+import {
+  sendMessage,
+  connectChat,
+  getMessages,
+  getChats,
+} from "../../../actions/chat";
 
 // const initialState = {
 //   conversations: [],
 //   selectedConversation: {},
 // };
-
+//
 // if (initialState.conversations.length > 0) {
 //   initialState.selectedConversation = initialState.conversations[0]; //maybe should be based on id?
 // }
-
-
-// TODO: check the length of the conversation list (allChats)? for selectedConversation
-const conversationContent = <NoConversations />;
+//
+// console.log(initialState.selectedConversation);
 
 class ChatShell extends React.Component {
+  state = {
+    conversations: {},
+    conversationIDs: [], // most recent at front, oldest at end
+    currentConvoID: 0,
+    conversationContent: <NoConversations />,
+  };
+
   constructor(props) {
     super(props);
-    this.state = {
-      chats: allChats,
-      // conversationContent: conversationContent, unnecessary
-      specificConvo: 0,
-    };
     this.sendNewMessage = this.sendNewMessage.bind(this);
     this.changeConversation = this.changeConversation.bind(this);
   }
 
   changeConversation(conversationID) {
-    const newState = this.state.chats;
-    if (newState.hasOwnProperty(conversationID)) {
-      this.setState({
-        specificConvo: conversationID,
-      });    
-    }
+    this.setState({
+      currentConvoID: conversationID,
+    });
   }
 
   sendNewMessage(textMessage) {
-    const newState = { ...this.state.chats };
-    newState.selectedConversation = { ...newState.selectedConversation };
+    const currentConvoID = this.state.currentConvoID;
+    console.log(currentConvoID);
+    const currentConvo = this.state.conversations[currentConvoID];
+    console.log(this.state.conversations);
+    console.log(this.state.conversations[currentConvoID]);
+    const currentMessages = currentConvo.messages;
 
-    newState.selectedConversation.messages.unshift({
-      imageUrl: null,
-      imageAlt: null,
-      messageText: textMessage,
-      createdAt: "Apr 16", // todo: change to current date time
-      isMyMessage: true,
-    });
+    console.log(currentMessages);
+    currentMessages.unshift({
+      "id": 0, // TODO: how to generate message ID?
+      "message": textMessage,
+      "type": 0,
+      "img": " ",
+      "dateCreated": "2021-04-26T01:12:47.000Z", // TODO: change to current DateTime
+      "sender": this.props.app.state.currentUser.id,
+      "receiver": currentConvo.users[0]["id"]
+    }); 
+    console.log(currentMessages);
+
 
     this.setState({
-      chats: newState,
+      conversations: {
+        ...this.state.conversations,
+        [currentConvoID]: {
+          ...this.state.conversations[currentConvoID],
+          messages: currentMessages,
+        },
+      },
     });
 
-    sendMessage(this, this.props.app.state.currentUser, this.state.selectedConversation.userID, textMessage);
+    console.log(this.state.conversations);
 
+    sendMessage(
+      this,
+      this.props.app.state.currentUser,
+      currentConvo.users[0]["id"],
+      textMessage
+    );
+  }
+
+  componentDidMount() {
+    //connectChat(this);
+    getChats(this, this.props.app.state.currentUser);
   }
 
   render() {
@@ -69,18 +97,19 @@ class ChatShell extends React.Component {
         <ConversationSearch />
         <ConversationList
           onConversationItemSelected={this.changeConversation}
-          conversations={this.state.chats.conversations}
-          selectedConversationId={
-            this.state.chats.selectedConversation.id
-          }
+          conversations={this.state.conversations}
+          conversationIDs={this.state.conversationIDs}
+          currentConvoID={this.state.currentConvoID}
         />
         <NewConversation />
         <ChatTitle
-          selectedConversation={this.state.chats.selectedConversation}
+          currentConvo={this.state.conversations[this.state.currentConvoID]}
         />
-        {this.state.chats.conversations.length > 0 ? (
+        {Object.keys(this.state.conversations).length > 0 ? (
           <MessageList
-            conversations={this.state}
+            messages={this.state.conversations[this.state.currentConvoID].messages || []} 
+            app = {this.props.app}
+            users = {this.state.conversations[this.state.currentConvoID].users}
           />
         ) : (
           <NoConversations />
@@ -89,13 +118,6 @@ class ChatShell extends React.Component {
       </div>
     );
   }
-
-  componentDidMount() {
-    connectChat(this);
-    const allChats = getChats(this, this.props.app.state.currentUser);
-
-  }
-
 }
 
 

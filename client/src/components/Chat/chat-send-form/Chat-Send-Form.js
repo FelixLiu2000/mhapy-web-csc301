@@ -23,6 +23,7 @@ class ChatForm extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
 
+    console.log(this.state.textMessage);
     // get the textMessage then send to parent component shell
     this.props.onNewMessage(this.state.textMessage);
 

@@ -1,22 +1,22 @@
 import { login } from "./user";
 
-export const handleInput = (event, form) => {
+export const handleInput = (event, comp) => {
   const target = event.target;
-  form.setState({
+  comp.setState({
     [target.name]: target.value,
   });
 };
 
-export const handleLogin = (event, form) => {
+export const handleLogin = (event, comp) => {
   event.preventDefault();
-  const state = form.state;
-  const app = form.props.app;
+  const state = comp.state;
+  const app = comp.props.app;
   const user = { email: state.email, password: state.password };
   login(user)
     .then((userData) => {
       // Set user
       app.setState({ currentUser: userData }, () => {
-        form.setState({
+        comp.setState({
           credentialError: false,
           errorText: "",
         });
@@ -24,12 +24,12 @@ export const handleLogin = (event, form) => {
     })
     .catch((err) => {
       if (err && err.message === "credentials") {
-        form.setState({
+        comp.setState({
           credentialError: true,
           errorText: "Invalid username or password.",
         });
       } else {
-        form.setState({ errorText: err.message });
+        comp.setState({ errorText: err.message });
       }
     });
 };
