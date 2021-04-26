@@ -4,7 +4,18 @@ import Message from "../message-item/message-item";
 import "./message-list.css";
 
 const MessageList = (props) => {
-  const messageItems = props.messages.map((message, index) => {
+
+  const chats = props.chats;
+  const specificConvoIndex = props.specificConvo;
+  const allMessages = [];
+
+  for (chat in chats) {
+    if (chat === specificConvoIndex) {
+      allMessages = chat["messages"];
+    }
+  }
+
+  const messageItems = allMessages.map((message, index) => {
     return (
       <Message
         key={index}
