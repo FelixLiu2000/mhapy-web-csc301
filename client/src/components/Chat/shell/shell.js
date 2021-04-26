@@ -9,18 +9,17 @@ import ChatForm from "../chat-send-form/Chat-Send-Form";
 import "./shell.css";
 
 const initialState = {
-  conversations: [
-  ],
+  conversations: [],
   selectedConversation: {},
 };
 
-  if (initialState.conversations.length > 0) {
-    initialState.selectedConversation = initialState.conversations[0]; //maybe should be based on id?
-  } 
+if (initialState.conversations.length > 0) {
+  initialState.selectedConversation = initialState.conversations[0]; //maybe should be based on id?
+}
 
-  console.log(initialState.selectedConversation);
+console.log(initialState.selectedConversation);
 
-  const conversationContent = <NoConversations/>
+const conversationContent = <NoConversations />;
 
 class ChatShell extends React.Component {
   constructor(props) {
@@ -32,7 +31,6 @@ class ChatShell extends React.Component {
     this.sendNewMessage = this.sendNewMessage.bind(this);
     this.changeConversation = this.changeConversation.bind(this);
   }
-
 
   changeConversation(conversationID) {
     const newState = { ...this.state.initialConv };
@@ -63,7 +61,6 @@ class ChatShell extends React.Component {
   }
 
   render() {
-
     return (
       <div id="chat-container">
         <ConversationSearch />
@@ -78,8 +75,13 @@ class ChatShell extends React.Component {
         <ChatTitle
           selectedConversation={this.state.initialConv.selectedConversation}
         />
-        {(this.state.initialConv.conversations.length > 0 ) ? <MessageList messages={this.state.initialConv.selectedConversation.messages}
-      />: <NoConversations/>}
+        {this.state.initialConv.conversations.length > 0 ? (
+          <MessageList
+            messages={this.state.initialConv.selectedConversation.messages}
+          />
+        ) : (
+          <NoConversations />
+        )}
         <ChatForm onNewMessage={this.sendNewMessage} />
       </div>
     );
