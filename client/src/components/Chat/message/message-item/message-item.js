@@ -5,14 +5,14 @@ class Message extends React.Component {
     let messageClass = "message-row";
     let imageThumbnail = null;
 
-    const receiverName = this.props.users[1]["username"];
+    const senderName = this.props.users[0]["username"];
 
     if (this.props.isMyMessage) {
       messageClass += " you-message";
     } else {
       messageClass += " other-message";
       imageThumbnail = (
-        <img src=" " alt={receiverName}/>
+        <img src=" " alt={senderName}/>
       );
     }
 

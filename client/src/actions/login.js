@@ -15,7 +15,7 @@ export const handleLogin = (event, comp) => {
   login(user)
     .then((userData) => {
       // Set user
-      app.setState({ currentUser: userData }, () => {
+      app.setState({ currentUser: userData, loggedIn: true }, () => {
         comp.setState({
           credentialError: false,
           errorText: "",

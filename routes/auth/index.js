@@ -3,9 +3,10 @@
 const express = require("express");
 const router = new express.Router();
 const apiRequest = require("../../helpers/apiRequest");
+const cleanUserData = require("../../helpers/cleanUserData");
 
 // POST route, login user
-// /auth/login
+// /api/auth/login
 router.post("/login", async (req, res) => {
   const API_ROUTE = "/user/login";
   const email = req.body.email || "";
@@ -19,16 +20,8 @@ router.post("/login", async (req, res) => {
       // Request body contained an error
       res.status(401).send("Invalid username or password.");
     } else {
-      // Clean user data
-      const userData = {
-        id: apiBody.data["_id"],
-        username: apiBody.data["user_name"],
-        email: apiBody.data["email"],
-        bio: apiBody.data["bio"],
-        img: apiBody.data["img"],
-        token: apiBody.data["token"],
-        dateCreated: new Date(apiBody.data["created"]).toISOString(),
-      };
+      // Get clean user data
+      const userData = cleanUserData(apiBody.data);
       req.session.user = userData.id;
       req.session.save();
       res.send(userData);
@@ -39,7 +32,7 @@ router.post("/login", async (req, res) => {
 });
 
 // POST route, logout user
-// /auth/logout
+// /api/auth/logout
 router.post("/logout", (req, res) => {
   let success = true;
   if (req.session) {
@@ -55,6 +48,17 @@ router.post("/logout", (req, res) => {
     res.send();
   } else {
     res.status(500).send("Internal Server Error");
+  }
+});
+
+// GET route, check if user session is valid
+// /api/auth/check-session
+router.get("/check-session", (req, res) => {
+  const session = req.session || {};
+  if (session.user) {
+    res.send({ id: session.user });
+  } else {
+    res.status(401).send('Unauthorized, not logged in');
   }
 });
 
