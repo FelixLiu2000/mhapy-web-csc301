@@ -5,6 +5,7 @@ const router = new express.Router();
 const apiRequest = require("../../helpers/apiRequest");
 
 // POST route, login user
+// /auth/login
 router.post("/login", async (req, res) => {
   const API_ROUTE = "/user/login";
   const email = req.body.email || "";
@@ -26,7 +27,7 @@ router.post("/login", async (req, res) => {
         bio: apiBody.data["bio"],
         img: apiBody.data["img"],
         token: apiBody.data["token"],
-        created: apiBody.data["created"],
+        dateCreated: new Date(apiBody.data["created"]).toISOString(),
       };
       req.session.user = userData.id;
       req.session.save();
@@ -38,6 +39,7 @@ router.post("/login", async (req, res) => {
 });
 
 // POST route, logout user
+// /auth/logout
 router.post("/logout", (req, res) => {
   let success = true;
   if (req.session) {

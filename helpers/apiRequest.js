@@ -9,8 +9,8 @@ const { API_URL } = require("../server");
  Returns the parsed response body on success, or null otherwise
  */
 const apiRequest = async (body, apiRoute) => {
-  // Wait 4 seconds for request
-  const API_TIMEOUT = 4000;
+  // Wait 10 seconds for request
+  const API_TIMEOUT = 10 * 1000;
   const controller = new AbortController();
   const timeout = setTimeout(() => {
     controller.abort();
