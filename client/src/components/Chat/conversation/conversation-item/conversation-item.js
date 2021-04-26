@@ -14,16 +14,16 @@ class ConversationItem extends React.Component {
     const className = classNames("conversation", {
       active: isActive,
     });
-
-    const month = (conversation.dateCreated.getMonth() + 1)
+    const lastMessageDate = conversation.lastMessage.dateCreated;
+    const month = (lastMessageDate.getMonth() + 1)
       .toString()
       .padStart(2, "0");
-    const day = conversation.dateCreated.getDay().toString().padStart(2, "0");
-    const hour = conversation.dateCreated
+    const day = lastMessageDate.getDay().toString().padStart(2, "0");
+    const hour = lastMessageDate
       .getHours()
       .toString()
       .padStart(2, "0");
-    const minute = conversation.dateCreated
+    const minute = lastMessageDate
       .getMinutes()
       .toString()
       .padStart(2, "0");
