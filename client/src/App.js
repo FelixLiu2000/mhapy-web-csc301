@@ -59,7 +59,8 @@ class App extends React.Component {
               <Route
                 exact
                 path={["/chat"]}
-                render={(props) => <ChatShell {...props} app={this} />}></Route>
+                render={(props) => <ChatShell {...props} app={this} />}
+              ></Route>
               <Route
                 exact
                 path={["/"]}
