@@ -11,8 +11,9 @@ import {
   sendMessage,
   connectChat,
   getMessages,
-  getChats,
+  getChats
 } from "../../../actions/chat";
+import { connectSocket } from "../../../actions/user";
 
 // const initialState = {
 //   conversations: [],
@@ -30,7 +31,9 @@ class ChatShell extends React.Component {
     conversations: {},
     conversationIDs: [], // most recent at front, oldest at end
     currentConvoID: 0,
-    conversationContent: <NoConversations />,
+    currentMessages: [], // messages for the current conversation
+    conversationContent: <NoConversations/>,
+    socket: null, // WebSocket for messages
   };
 
   constructor(props) {
@@ -41,80 +44,66 @@ class ChatShell extends React.Component {
 
   changeConversation(conversationID) {
     this.setState({
-      currentConvoID: conversationID,
+      currentConvoID: conversationID
     });
+    // Get first page of messages
+    getMessages(this, conversationID, 1);
   }
 
   sendNewMessage(textMessage) {
     const currentConvoID = this.state.currentConvoID;
     console.log(currentConvoID);
     const currentConvo = this.state.conversations[currentConvoID];
-    console.log(this.state.conversations);
-    console.log(this.state.conversations[currentConvoID]);
-    const currentMessages = currentConvo.messages;
-
+    console.log(currentConvo);
+    const currentMessages = [...this.state.currentMessages];
     console.log(currentMessages);
-    currentMessages.unshift({
-      "id": 0, // TODO: how to generate message ID?
-      "message": textMessage,
-      "type": 0,
-      "img": " ",
-      "dateCreated": "2021-04-26T01:12:47.000Z", // TODO: change to current DateTime
-      "sender": this.props.app.state.currentUser.id,
-      "receiver": currentConvo.users[0]["id"]
-    }); 
-    console.log(currentMessages);
-
-
-    this.setState({
-      conversations: {
-        ...this.state.conversations,
-        [currentConvoID]: {
-          ...this.state.conversations[currentConvoID],
-          messages: currentMessages,
-        },
-      },
-    });
-
-    console.log(this.state.conversations);
-
-    sendMessage(
+    // Send message to server
+    const message = sendMessage(
       this,
       this.props.app.state.currentUser,
       currentConvo.users[0]["id"],
       textMessage
     );
+    // Update UI with new message
+    currentMessages.unshift(message);
+    console.log(currentMessages);
+
+    this.setState({ currentMessages: currentMessages });
   }
 
   componentDidMount() {
-    //connectChat(this);
+    connectSocket(this.props.app.state.currentUser.id);
+    connectChat(this);
     getChats(this, this.props.app.state.currentUser);
   }
 
   render() {
     return (
       <div id="chat-container">
-        <ConversationSearch />
+        <ConversationSearch/>
         <ConversationList
           onConversationItemSelected={this.changeConversation}
           conversations={this.state.conversations}
           conversationIDs={this.state.conversationIDs}
           currentConvoID={this.state.currentConvoID}
         />
-        <NewConversation />
+        <NewConversation/>
         <ChatTitle
           currentConvo={this.state.conversations[this.state.currentConvoID]}
         />
         {Object.keys(this.state.conversations).length > 0 ? (
           <MessageList
-            messages={this.state.conversations[this.state.currentConvoID].messages || []} 
-            app = {this.props.app}
-            users = {this.state.conversations[this.state.currentConvoID].users}
+            messages={this.state.currentMessages}
+            app={this.props.app}
+            users={this.state.conversations[this.state.currentConvoID].users}
           />
         ) : (
-          <NoConversations />
+          <NoConversations/>
         )}
-        <ChatForm onNewMessage={this.sendNewMessage} />
+        <ChatForm
+          disabled={!this.state.socket}
+          onNewMessage={this.sendNewMessage}
+        />
       </div>
     );
   }

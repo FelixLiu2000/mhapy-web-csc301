@@ -13,9 +13,10 @@ export const connectChat = (comp) => {
 };
 
 // Send a message through the chat websocket
+// Returns the message object that was sent through the socket
 export const sendMessage = (comp, user, receiverID, message) => {
   const socket = comp.state.socket;
-  const chatID = comp.state.currentChatID;
+  const chatID = comp.state.currentConvoID;
   // Generate UUIDv1 id for message
   const msgID = uuid();
   // JSONify message
@@ -32,8 +33,9 @@ export const sendMessage = (comp, user, receiverID, message) => {
   };
   // Emit socket event
   socket.emit("new_message", JSON.stringify(msg));
+  console.log(socket);
   console.log("[CHAT] Message sent");
-  // TODO: Update UI with new message
+  return msg;
 };
 
 // Get messages from server by page from a given conversation
@@ -54,7 +56,7 @@ export const getMessages = (comp, chatID, page) => {
         res.json().then((body) => {
           // Set messages state
           // FIXME: Change to correct state key
-          comp.setState({ messages: body.messages });
+          comp.setState({ currentMessages: body.messages });
         });
       } else {
         if (res.status === 401) {

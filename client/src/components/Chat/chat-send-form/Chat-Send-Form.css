@@ -39,3 +39,8 @@ button {
   outline: none;
   cursor: pointer;
 }
+
+.button--disabled {
+  border: none;
+  background: darkgray;
+}

@@ -49,8 +49,8 @@ router.get("/", async (req, res) => {
             img: message["img"],
             // Convert epoch seconds to milliseconds, then to ISO time
             dateCreated: new Date(message["created"] * 1000).toISOString(),
-            sender: message["sender_id"],
-            receiver: message["receiver_id"],
+            sender_id: message["sender_id"],
+            receiver_id: message["receiver_id"],
           });
         }
       }
