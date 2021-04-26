@@ -187,15 +187,7 @@ const initialState = {
       title: "John Anderson",
       createdAt: "1 week ago",
       latestMessageText: "Yes I love how Python does that",
-      messages: [
-        {
-          imageUrl: null,
-          imageAlt: null,
-          messageText: "Hi",
-          createdAt: "1 week ago",
-          isMyMessage: true,
-        },
-      ],
+      messages: [],
     },
     {
       id: "4",
