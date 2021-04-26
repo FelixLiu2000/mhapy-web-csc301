@@ -6,7 +6,7 @@ const SOCKET_ROUTE = "/socket.io";
 const API_ROUTE = "/api";
 
 // API URLs
-const BACKEND_URL = "https://" + process.env.API_URL;
+const BACKEND_URL = process.env.API_URL;
 const API_URL = BACKEND_URL + API_ROUTE;
 
 // Express
