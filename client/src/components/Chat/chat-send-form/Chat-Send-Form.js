@@ -3,30 +3,31 @@ import React from "react";
 import "./Chat-Send-Form.css";
 
 class ChatForm extends React.Component {
+  state = {
+    textMessage: "",
+  };
+
   constructor(props) {
     super(props);
-    this.state = {
-      textMessage: "",
-    };
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   // on change set textMessage to be whatever is typed in the text field
-  handleChange(event) {
+  handleChange = (event) => {
     const value = event.target.value;
-    const name = event.target.name;
+    // const name = event.target.name;
     this.setState({
-      [name]: value,
+      textMessage: value,
     });
-  }
+  };
 
   handleSubmit(event) {
     event.preventDefault();
-    const name = event.target.name;
-
-    // TODO: onMessageSubmitted
+    // get the textMessage then send to parent component shell
+    this.props.onNewMessage(this.state.textMessage);
 
     this.setState({
-      [name]: "",
+      textMessage: "",
     });
   }
 
@@ -38,9 +39,9 @@ class ChatForm extends React.Component {
           type="text"
           placeholder="type a message"
           value={this.state.textMessage}
-          onChange={this.handleChange}
+          onChange={(event) => this.handleChange(event)}
         />
-        <button type="submit">Send</button>
+        <button id="send-button">Send</button>
       </form>
     );
   }

@@ -1,29 +1,32 @@
 import React from "react";
+import { getDateTimeString } from "../../../../actions/chat";
 
-// import "./message-item.css";
+class Message extends React.Component {
+  render() {
+    let messageClass = "message-row";
+    let imageThumbnail = null;
 
-const Message = (props) => {
-  let messageClass = "message-row";
-  let imageThumbnail = null;
+    const senderName = this.props.users[0]["username"];
 
-  if (props.isMyMessage) {
-    messageClass += " you-message";
-  } else {
-    messageClass += " other-message";
-    imageThumbnail = (
-      <img src={props.message.imageUrl} alt={props.message.imageAlt} />
+    if (this.props.isMyMessage) {
+      messageClass += " you-message";
+    } else {
+      messageClass += " other-message";
+      imageThumbnail = <img src=" " alt={senderName} />;
+    }
+    const rawDate = this.props.message.dateCreated;
+    const dateCreated = getDateTimeString(rawDate);
+
+    return (
+      <div className={messageClass}>
+        <div className="message-content">
+          {imageThumbnail}
+          <div className="message-text">{this.props.message.message}</div>
+          <div className="message-time">{dateCreated}</div>
+        </div>
+      </div>
     );
   }
-
-  return (
-    <div className={messageClass}>
-      <div className="message-content">
-        {imageThumbnail}
-        <div className="message-text">{props.message.messageText}</div>
-        <div className="message-time">{props.message.createdAt}</div>
-      </div>
-    </div>
-  );
-};
+}
 
 export default Message;

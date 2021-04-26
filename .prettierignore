@@ -4,3 +4,5 @@
 /deliverable-1
 /deliverable-2
 .*
+package.json
+package-lock.json

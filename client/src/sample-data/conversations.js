@@ -2,6 +2,7 @@ export const conversations = [
   {
     imageUrl: "",
     imageAlt: "Daryl Duckmanton",
+    userID: 0,
     title: "Daryl Duckmanton",
     createdAt: "Apr 16",
     latestMessageText: "This is a message",
