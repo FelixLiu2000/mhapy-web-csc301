@@ -30,19 +30,19 @@ class App extends React.Component {
 
   unauthenticated() {
     return (
-      <BrowserRouter>
-        <Switch>
-          <ThemeProvider theme={theme}>
+      <ThemeProvider theme={theme}>
+        <BrowserRouter>
+          <Switch>
             <Route
               exact
               path={["/", "/chat"]}
               render={(props) => <Login {...props} app={this} />}
             />
-          </ThemeProvider>
-          {/* Default path*/}
-          <Route render={() => <h1>404 Not Found</h1>} />
-        </Switch>
-      </BrowserRouter>
+            {/* Default path*/}
+            <Route render={() => <h1>404 Not Found</h1>} />
+          </Switch>
+        </BrowserRouter>
+      </ThemeProvider>
     );
   }
 
@@ -53,24 +53,24 @@ class App extends React.Component {
       return this.unauthenticated();
     } else {
       return (
-        <BrowserRouter>
-          <Switch>
-            <ThemeProvider theme={theme}>
+        <ThemeProvider theme={theme}>
+          <BrowserRouter>
+            <Switch>
               <Route
                 exact
                 path={["/chat"]}
                 render={(props) => <ChatShell {...props} app={this} />}
-              ></Route>
+              />
               <Route
                 exact
                 path={["/"]}
                 render={(props) => <Home {...props} app={this} />}
               />
-            </ThemeProvider>
-            {/* Default path*/}
-            <Route render={() => <h1>404 Not Found</h1>} />
-          </Switch>
-        </BrowserRouter>
+              {/* Default path*/}
+              <Route render={() => <h1>404 Not Found</h1>} />
+            </Switch>
+          </BrowserRouter>
+        </ThemeProvider>
       );
     }
   }
