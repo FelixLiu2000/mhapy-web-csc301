@@ -104,10 +104,16 @@ export const getChats = (comp, user) => {
             const chatBDate = conversations[b].lastMessage.dateCreated;
             return chatADate < chatBDate ? 1 : -1;
           });
+          console.log(sortedIDs);
           comp.setState({
             conversations: conversations || {},
             conversationIDs: sortedIDs || [],
-            currentConvoID: sortedIDs[0] || -1,
+          }, () => {
+            // If current convo needs to be defined
+            if (comp.state.currentConvoID === -1) {
+              const initialConvoID = sortedIDs[0] || -1;
+              comp.changeConversation(initialConvoID);
+            }
           });
         });
       } else {

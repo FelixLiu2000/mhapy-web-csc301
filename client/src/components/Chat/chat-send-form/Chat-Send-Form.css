@@ -27,7 +27,7 @@
   margin-left: 15px;
 }
 
-button {
+#send-button {
   height: 51px;
   flex: 0 0 90px;
   padding: 0 10px;
@@ -38,9 +38,4 @@ button {
   border-radius: 0 6px 6px 0;
   outline: none;
   cursor: pointer;
-}
-
-.button--disabled {
-  border: none;
-  background: darkgray;
 }

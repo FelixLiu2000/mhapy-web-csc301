@@ -18,7 +18,10 @@ class MessageList extends React.Component {
       );
     });
 
-    return <div id="chat-message-list">{messageItems}</div>;
+    return <div id="chat-message-list">
+              {messageItems}
+              <button className="load-button">{ "load more messages" }</button>              
+           </div>;
   }
 }
 

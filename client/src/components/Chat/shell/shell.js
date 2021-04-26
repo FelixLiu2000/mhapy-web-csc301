@@ -30,7 +30,7 @@ class ChatShell extends React.Component {
   state = {
     conversations: {},
     conversationIDs: [], // most recent at front, oldest at end
-    currentConvoID: 0,
+    currentConvoID: -1,
     currentMessages: [], // messages for the current conversation
     conversationContent: <NoConversations/>,
     socket: null, // WebSocket for messages
@@ -46,17 +46,16 @@ class ChatShell extends React.Component {
     this.setState({
       currentConvoID: conversationID
     });
-    // Get first page of messages
-    getMessages(this, conversationID, 1);
+    if (conversationID !== -1) {
+      // Get first page of messages
+      getMessages(this, conversationID, 1);
+    }
   }
 
   sendNewMessage(textMessage) {
     const currentConvoID = this.state.currentConvoID;
-    console.log(currentConvoID);
     const currentConvo = this.state.conversations[currentConvoID];
-    console.log(currentConvo);
     const currentMessages = [...this.state.currentMessages];
-    console.log(currentMessages);
     // Send message to server
     const message = sendMessage(
       this,
@@ -66,7 +65,6 @@ class ChatShell extends React.Component {
     );
     // Update UI with new message
     currentMessages.unshift(message);
-    console.log(currentMessages);
 
     this.setState({ currentMessages: currentMessages });
   }
@@ -91,7 +89,7 @@ class ChatShell extends React.Component {
         <ChatTitle
           currentConvo={this.state.conversations[this.state.currentConvoID]}
         />
-        {Object.keys(this.state.conversations).length > 0 ? (
+        {this.state.currentConvoID !== -1 ? (
           <MessageList
             messages={this.state.currentMessages}
             app={this.props.app}
