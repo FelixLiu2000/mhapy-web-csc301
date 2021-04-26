@@ -1,5 +1,6 @@
 #search-container {
   display: grid;
+  grid: 73px/233px;
   align-items: center;
   grid-area: search-container;
   background: #0048aa;
@@ -16,7 +17,7 @@
   border-radius: 2px;
   height: 30px;
   border: 0;
-  padding-left: 48px;
+  padding-left: 10px;
   padding-right: 20px;
   font-size: 1.4rem;
   background: rgba(255, 255, 255, 0.3) no-repeat 15px center;
