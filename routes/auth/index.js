@@ -58,7 +58,7 @@ router.get("/check-session", (req, res) => {
   if (session.user) {
     res.send({ id: session.user });
   } else {
-    res.status(401).send('Unauthorized, not logged in');
+    res.status(401).send("Unauthorized, not logged in");
   }
 });
 

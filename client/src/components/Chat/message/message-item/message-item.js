@@ -12,9 +12,7 @@ class Message extends React.Component {
       messageClass += " you-message";
     } else {
       messageClass += " other-message";
-      imageThumbnail = (
-        <img src=" " alt={senderName}/>
-      );
+      imageThumbnail = <img src=" " alt={senderName} />;
     }
     const rawDate = this.props.message.dateCreated;
     const dateCreated = getDateTimeString(rawDate);

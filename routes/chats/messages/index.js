@@ -55,7 +55,7 @@ router.get("/", async (req, res) => {
         }
       }
     }
-    const response = { messages: messages }
+    const response = { messages: messages };
     if (apiBody.next) {
       response.nextPage = apiBody.next.page;
     }

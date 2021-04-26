@@ -29,7 +29,7 @@ export const sendMessage = (comp, user, receiverID, message) => {
     message: message,
     chat_id: chatID,
     message_type: 0,
-    img: ""
+    img: "",
   };
   // Emit socket event
   socket.emit("new_message", JSON.stringify(msg));
@@ -47,8 +47,8 @@ export const getMessages = (comp, chatID, page) => {
     method: "GET",
     headers: {
       Accept: "application/json",
-      "Content-Type": "application/json"
-    }
+      "Content-Type": "application/json",
+    },
   });
   // Send request
   fetch(request)
@@ -66,13 +66,13 @@ export const getMessages = (comp, chatID, page) => {
             comp.setState((prevState) => ({
               messagePage: page,
               currentMessages: prevState.currentMessages.concat(body.messages),
-              hasMoreMessages: hasMoreMessages
+              hasMoreMessages: hasMoreMessages,
             }));
           } else {
             comp.setState(() => ({
               messagePage: page,
               currentMessages: body.messages,
-              hasMoreMessages: hasMoreMessages
+              hasMoreMessages: hasMoreMessages,
             }));
           }
         });
@@ -98,8 +98,8 @@ export const getChats = (comp, user) => {
     method: "GET",
     headers: {
       Accept: "application/json",
-      "Content-Type": "application/json"
-    }
+      "Content-Type": "application/json",
+    },
   });
   // Send request
   fetch(request)
@@ -122,16 +122,19 @@ export const getChats = (comp, user) => {
             const chatBDate = conversations[b].lastMessage.dateCreated;
             return chatADate < chatBDate ? 1 : -1;
           });
-          comp.setState({
-            conversations: conversations || {},
-            conversationIDs: sortedIDs || []
-          }, () => {
-            // If current convo needs to be defined
-            if (comp.state.currentConvoID === -1) {
-              const initialConvoID = sortedIDs[0] || -1;
-              comp.changeConversation(initialConvoID);
+          comp.setState(
+            {
+              conversations: conversations || {},
+              conversationIDs: sortedIDs || [],
+            },
+            () => {
+              // If current convo needs to be defined
+              if (comp.state.currentConvoID === -1) {
+                const initialConvoID = sortedIDs[0] || -1;
+                comp.changeConversation(initialConvoID);
+              }
             }
-          });
+          );
         });
       } else {
         if (res.status === 401) {
@@ -149,28 +152,23 @@ export const getChats = (comp, user) => {
 // Get a formatted date time string for messages and conversations
 export const getDateTimeString = (rawDate) => {
   const today = new Date();
-  const month = (rawDate.getMonth() + 1)
-    .toString()
-    .padStart(2, "0");
+  const month = (rawDate.getMonth() + 1).toString().padStart(2, "0");
   const date = rawDate.getDate().toString().padStart(2, "0");
-  const minute = rawDate
-    .getMinutes()
-    .toString()
-    .padStart(2, "0");
-  const year = rawDate
-    .getFullYear()
-    .toString();
+  const minute = rawDate.getMinutes().toString().padStart(2, "0");
+  const year = rawDate.getFullYear().toString();
   let hour = rawDate.getHours();
-  const ampm = hour >= 12 ? 'PM' : 'AM';
+  const ampm = hour >= 12 ? "PM" : "AM";
   hour = hour % 12;
   hour = hour ? hour : 12; // convert hour '0' to '12'
   let dateTimeString = `${month}/${date} at ${hour}:${minute} ${ampm}`;
-  if (today.getDate() === rawDate.getDate() &&
+  if (
+    today.getDate() === rawDate.getDate() &&
     today.getMonth() === rawDate.getMonth() &&
-    today.getFullYear() === rawDate.getFullYear()) {
+    today.getFullYear() === rawDate.getFullYear()
+  ) {
     dateTimeString = `Today at ${hour}:${minute} ${ampm}`;
   } else if (today.getFullYear() !== rawDate.getFullYear()) {
     dateTimeString = `${year}/${month}/${date} at ${hour}:${minute} ${ampm}`;
   }
   return dateTimeString;
-}
+};

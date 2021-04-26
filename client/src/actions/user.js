@@ -21,7 +21,7 @@ const requestUser = async (request) => {
     console.error(error);
     return Promise.reject(error);
   }
-}
+};
 
 // Send request to server to login a user
 export const login = async (user) => {

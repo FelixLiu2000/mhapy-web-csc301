@@ -1,5 +1,4 @@
 import React from "react";
-import { ThemeProvider } from "@material-ui/core/styles";
 import { Box, Typography } from "@material-ui/core";
 
 class Home extends React.Component {
@@ -10,7 +9,7 @@ class Home extends React.Component {
           Home
         </Typography>
       </Box>
-    )
+    );
   }
 }
 

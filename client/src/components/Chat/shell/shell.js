@@ -11,7 +11,7 @@ import {
   sendMessage,
   connectChat,
   getMessages,
-  getChats
+  getChats,
 } from "../../../actions/chat";
 import { connectSocket } from "../../../actions/user";
 
@@ -34,8 +34,8 @@ class ChatShell extends React.Component {
     currentMessages: [], // messages for the current conversation
     messagePage: 1,
     hasMoreMessages: false,
-    conversationContent: <NoConversations/>,
-    socket: null // WebSocket for messages
+    conversationContent: <NoConversations />,
+    socket: null, // WebSocket for messages
   };
 
   constructor(props) {
@@ -46,7 +46,7 @@ class ChatShell extends React.Component {
 
   changeConversation(conversationID) {
     this.setState({
-      currentConvoID: conversationID
+      currentConvoID: conversationID,
     });
     if (conversationID !== -1) {
       // Get first page of messages
@@ -80,14 +80,14 @@ class ChatShell extends React.Component {
   render() {
     return (
       <div id="chat-container">
-        <ConversationSearch/>
+        <ConversationSearch />
         <ConversationList
           onConversationItemSelected={this.changeConversation}
           conversations={this.state.conversations}
           conversationIDs={this.state.conversationIDs}
           currentConvoID={this.state.currentConvoID}
         />
-        <NewConversation/>
+        <NewConversation />
         <ChatTitle
           currentConvo={this.state.conversations[this.state.currentConvoID]}
         />
@@ -97,14 +97,16 @@ class ChatShell extends React.Component {
             app={this.props.app}
             users={this.state.conversations[this.state.currentConvoID].users}
             showLoadMore={this.state.hasMoreMessages}
-            onLoadMore={() => getMessages(
-              this,
-              this.state.currentConvoID,
-              this.state.messagePage + 1
-            )}
+            onLoadMore={() =>
+              getMessages(
+                this,
+                this.state.currentConvoID,
+                this.state.messagePage + 1
+              )
+            }
           />
         ) : (
-          <NoConversations/>
+          <NoConversations />
         )}
         <ChatForm
           disabled={!this.state.socket}
@@ -114,6 +116,5 @@ class ChatShell extends React.Component {
     );
   }
 }
-
 
 export default ChatShell;

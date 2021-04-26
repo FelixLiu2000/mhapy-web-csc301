@@ -4,7 +4,7 @@ import "./Chat-Send-Form.css";
 
 class ChatForm extends React.Component {
   state = {
-    textMessage: ""
+    textMessage: "",
   };
 
   constructor(props) {
@@ -17,7 +17,7 @@ class ChatForm extends React.Component {
     const value = event.target.value;
     // const name = event.target.name;
     this.setState({
-      textMessage: value
+      textMessage: value,
     });
   };
 
@@ -27,21 +27,21 @@ class ChatForm extends React.Component {
     this.props.onNewMessage(this.state.textMessage);
 
     this.setState({
-      textMessage: ""
+      textMessage: "",
     });
   }
 
   render() {
     return (
       <form id="chat-form" onSubmit={this.handleSubmit}>
-        <img src="" alt="Add Attachment"/>
+        <img src="" alt="Add Attachment" />
         <input
           type="text"
           placeholder="type a message"
           value={this.state.textMessage}
           onChange={(event) => this.handleChange(event)}
         />
-        <button id="send-button">Send</button>   
+        <button id="send-button">Send</button>
       </form>
     );
   }
