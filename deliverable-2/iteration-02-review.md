@@ -1,4 +1,4 @@
-# YOUR PRODUCT/TEAM NAME
+# MHAPy Team 17
 
  > _Note:_ This document is meant to be written during (or shortly after) your review meeting, which should happen fairly close to the due date.      
  >      
@@ -7,8 +7,8 @@
 
 ## Iteration XX - Review & Retrospect
 
- * When: FILL IN THE DATE WHEN YOU ACTUALLY HAD YOUR REVIEW MEETING
- * Where: PHYSICAL LOCATION AND/OR ONLINE
+ * When: April 27, 2021
+ * Where: Online via Zoom
 
 ## Process - Reflection
 
