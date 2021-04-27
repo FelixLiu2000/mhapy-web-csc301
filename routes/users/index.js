@@ -6,6 +6,10 @@ const { authMiddleware } = require("../../server");
 const getUserChats = require("../../helpers/getUserChats");
 const cleanUserData = require("../../helpers/cleanUserData");
 const apiRequest = require("../../helpers/apiRequest");
+// URL of the backend API to make requests to
+const { BACKEND_URL } = require("../../server");
+// Fetch API for Node
+const fetch = require("node-fetch");
 
 // GET route, retrieve chats associated with a given user id
 // /api/users/:id/chats
@@ -24,6 +28,32 @@ router.get("/:id/chats", authMiddleware, async (req, res) => {
     res.status(500).send(new Error("Internal Server Error"));
   } else {
     res.send(chats);
+  }
+});
+
+// GET route, retrieve profile picture associated with a given user id
+// /api/users/images
+router.get("/images", async (req, res) => {
+  const file = req.query.file;
+  if (!file) {
+    res.status(404).send();
+    return;
+  }
+  // Request image
+  const IMG_ROUTE = `/uploads/users_profile_img/${file}`;
+  const request = new fetch.Request(BACKEND_URL + IMG_ROUTE, {
+    method: "GET",
+    headers: {
+      Accept: "image/png",
+      "Content-Type": "image/png",
+    },
+  });
+  const backendRes = await fetch(request);
+  if (backendRes.ok) {
+    res.set('Content-Type', 'image/png');
+    backendRes.body.pipe(res);
+  } else {
+    res.status(backendRes.status).send();
   }
 });
 

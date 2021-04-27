@@ -63,6 +63,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Exports
 module.exports = {
   API_URL,
+  BACKEND_URL,
   authMiddleware,
 };
 

@@ -50,10 +50,11 @@
 .message-row img {
   border-radius: 100%;
   grid-row: span 2;
+  width: 100%
 }
 
 .message-time {
-  font-size: 1.3rem;
+  font-size: 1rem;
   color: #777;
 }
 
@@ -89,4 +90,11 @@
   font-size: 1.4rem;
   cursor: pointer;
   outline: none;
+}
+
+#message-loading {
+  flex: 0 0 auto;
+  align-self: center;
+  margin-bottom: 10px;
+  padding: 5px;
 }
