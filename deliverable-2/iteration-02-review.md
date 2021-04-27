@@ -40,11 +40,11 @@ In our deliverable 1, we planned to use Trello to keep track of the overarching 
 
 #### Decision 2: Lack of scheduled and mandatory code sessions
 
-Although we planned mandatory weekly team meetings to discuss progress and goals, we did not have pre-scheduled and mandatory code sessions. We thought we would be flexible with holding code sessions as needed. However, we didn't end up having any code sessions. We believe the lack of scheduled code sessions caused difficulties because people procrastinated on the project without mandatory code sessions. For example, the two teammates that dropped, Su Young Lee and Magomed Evloev, did not contribute to the code repository at all. This is likely because they had trouble managing their time and dedicating time to the 301 project. If we had scheduled 
+Although we planned mandatory weekly team meetings to discuss progress and goals, we did not have pre-scheduled and mandatory code sessions. We thought we would be flexible with holding code sessions as needed. However, we didn't end up having any code sessions. We believe the lack of scheduled code sessions caused difficulties because people procrastinated on the project without mandatory code sessions. For example, the two teammates that dropped, Su Young Lee and Magomed Evloev, did not contribute to the code repository at all. This is likely because they had trouble managing their time and dedicating time to the 301 project. If we had scheduled coding sessions, teammates could work together and ask for help immediately when they run into problems.
 
 #### Decision 3: Communication via Messenger group
 
-
+We decided to communicate via Messenger group as our primary method. However, this method proved to be not very successful because 
 
  * 2 - 4 decisions.
  * Ordered from most to least important.
