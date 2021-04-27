@@ -4,6 +4,7 @@
  >      
  > _Suggestion:_ Have your review meeting a day or two before the due date. This way you will have some time to go over (and edit) this document, and all team members should have a chance to make their contribution.
 
+##### written with the perspective of when we just found out that the team is down to 2 people, Xi Yu (Kristin) Huang and Felix Liu.
 
 ## Iteration XX - Review & Retrospect
 
