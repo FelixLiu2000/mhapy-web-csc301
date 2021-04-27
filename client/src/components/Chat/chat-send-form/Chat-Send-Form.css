@@ -9,7 +9,7 @@
   padding-right: 22px;
 }
 
-#chat-form > img {
+#chat-form__attachment {
   cursor: pointer;
   width: 32px;
   height: 32px;
@@ -31,8 +31,8 @@
   height: 51px;
   flex: 0 0 90px;
   padding: 0 10px;
-  background: #0048aa;
-  border: 1px solid #002c88;
+  background: #673ab7;
+  border: 1px solid #482880;
   color: #fff;
   font-size: 1.4rem;
   border-radius: 0 6px 6px 0;

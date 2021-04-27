@@ -4,13 +4,13 @@
   grid-gap: 10px;
   color: #ddd;
   font-size: 1.3rem;
-  border-bottom: 1px solid #002c88;
+  border-bottom: 1px solid #432180;
   padding: 20px 20px 20px 15px;
 }
 
 .conversation.active,
 .conversation:hover {
-  background: #002c88;
+  background: #482880;
 }
 
 .conversation:hover {

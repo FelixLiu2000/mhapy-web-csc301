@@ -1,6 +1,7 @@
 import React from "react";
 
 import "./Chat-Send-Form.css";
+import AttachFileIcon from "@material-ui/icons/AttachFile";
 
 class ChatForm extends React.Component {
   state = {
@@ -34,7 +35,7 @@ class ChatForm extends React.Component {
   render() {
     return (
       <form id="chat-form" onSubmit={this.handleSubmit}>
-        <img src="" alt="Add Attachment" />
+        <AttachFileIcon id={"chat-form__attachment"} />
         <input
           type="text"
           placeholder="type a message"

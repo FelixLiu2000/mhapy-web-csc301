@@ -7,12 +7,18 @@ class Message extends React.Component {
     let imageThumbnail = null;
 
     const senderName = this.props.users[0]["username"];
+    const senderImgPath = this.props.users[0]["img"];
 
     if (this.props.isMyMessage) {
       messageClass += " you-message";
     } else {
       messageClass += " other-message";
-      imageThumbnail = <img src=" " alt={senderName} />;
+      imageThumbnail = (
+        <img
+          src={`/api/users/images/?file=${senderImgPath}`}
+          alt={senderName}
+        />
+      );
     }
     const rawDate = this.props.message.dateCreated;
     const dateCreated = getDateTimeString(rawDate);

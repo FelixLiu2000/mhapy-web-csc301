@@ -16,13 +16,15 @@ class ConversationItem extends React.Component {
       active: isActive,
     });
     const lastMessageDate = conversation.lastMessage.dateCreated;
+    const userImgPath = conversation.users[0].img;
+    console.log(userImgPath);
     const dateCreated = getDateTimeString(lastMessageDate);
     return (
       <div
         className={className}
         onClick={() => onConversationItemSelected(conversationID)}
       >
-        <img src={conversation.img} alt={""} />
+        <img src={`/api/users/images/?file=${userImgPath}`} alt={""} />
         <div className="title-text">{conversation.users[0].username}</div>
         <div className="created-date">{dateCreated}</div>
         <div className="conversation-message">

@@ -46,6 +46,7 @@ class ChatShell extends React.Component {
 
   changeConversation(conversationID) {
     this.setState({
+      currentMessages: [],
       currentConvoID: conversationID,
     });
     if (conversationID !== -1) {
@@ -89,7 +90,11 @@ class ChatShell extends React.Component {
         />
         <NewConversation />
         <ChatTitle
-          currentConvo={this.state.conversations[this.state.currentConvoID]}
+          currentConvo={
+            this.state.currentMessages.length > 0
+              ? this.state.conversations[this.state.currentConvoID]
+              : null
+          }
         />
         {this.state.currentConvoID !== -1 ? (
           <MessageList

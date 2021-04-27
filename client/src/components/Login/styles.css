@@ -1,5 +1,5 @@
 .MuiTypography-root.login__header {
-  margin: 50px 0px;
+  margin: 30px 0px;
   align-self: center;
 }
 
@@ -10,7 +10,7 @@
 }
 
 .logo__img {
-  width: 300px;
-  height: 300px;
+  width: 500px;
+  height: 297px;
   margin: auto;
 }

@@ -1,14 +1,13 @@
 #chat-container {
   display: grid;
   grid:
-    "search-container chat-title" 71px
+    "search-container chat-title" 0.1fr
     "conversation-list chat-message-list" 1fr
-    "new-message-container chat-form" 78px
-    / 275px 1fr;
-  min-width: 800px;
-  max-width: 1000px;
+    "new-message-container chat-form" 0.1fr
+    / 0.5fr 1fr;
+  max-width: 1200px;
   max-height: 800px;
-  width: 100%;
+  width: 80%;
   height: 95vh;
   background: #fff;
   border-radius: 10px;

@@ -1,6 +1,7 @@
 import React from "react";
 
 import Message from "../message-item/message-item";
+import CircularProgress from "@material-ui/core/CircularProgress";
 import "./message-list.css";
 
 class MessageList extends React.Component {
@@ -22,10 +23,16 @@ class MessageList extends React.Component {
     return (
       <div id="chat-message-list">
         {messageItems}
-        {this.props.showLoadMore ? (
+        {this.props.showLoadMore && messageItems.length > 0 ? (
           <button id="load-button" onClick={this.props.onLoadMore}>
             {"load more messages"}
           </button>
+        ) : messageItems.length === 0 ? (
+          <CircularProgress
+            id={"message-loading"}
+            color={"primary"}
+            size={32}
+          />
         ) : null}
       </div>
     );
