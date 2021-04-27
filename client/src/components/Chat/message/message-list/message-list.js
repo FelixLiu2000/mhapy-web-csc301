@@ -23,21 +23,17 @@ class MessageList extends React.Component {
     return (
       <div id="chat-message-list">
         {messageItems}
-        {
-          this.props.showLoadMore && messageItems.length > 0 ? (
-            <button id="load-button" onClick={this.props.onLoadMore}>
-              {"load more messages"}
-            </button>
-          ) : (
-            messageItems.length === 0 ? (
-              <CircularProgress
-                id={"message-loading"}
-                color={"primary"}
-                size={32}
-              />
-            ) : null
-          )
-        }
+        {this.props.showLoadMore && messageItems.length > 0 ? (
+          <button id="load-button" onClick={this.props.onLoadMore}>
+            {"load more messages"}
+          </button>
+        ) : messageItems.length === 0 ? (
+          <CircularProgress
+            id={"message-loading"}
+            color={"primary"}
+            size={32}
+          />
+        ) : null}
       </div>
     );
   }

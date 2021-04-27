@@ -50,7 +50,7 @@ router.get("/images", async (req, res) => {
   });
   const backendRes = await fetch(request);
   if (backendRes.ok) {
-    res.set('Content-Type', 'image/png');
+    res.set("Content-Type", "image/png");
     backendRes.body.pipe(res);
   } else {
     res.status(backendRes.status).send();
