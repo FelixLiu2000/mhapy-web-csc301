@@ -17,15 +17,17 @@
 
 List **process-related** (i.e. team organization and how you work) decisions that, in retrospect, turned out to be successful.
 
-# Decision 1: Weekly team meeting on Monday 
+#### Decision 1: Weekly team meeting on Monday 
 
-Our team decided to have weekly team meetings on Monday at a set time when everyone would be available. This proved to be a successful decision as it allowed everyone on the team to come together in a mandatory session. During this mandatory session, we were able to check on progress and set weekly goals. This helped everyone to keep expectations aligned on the status of the project. In addition, this helped us to plan our project and keep us on track.
+Our team decided to have weekly team meetings on Monday at a set time when everyone would be available. This proved to be a successful decision as it allowed everyone on the team to come together in a mandatory session. During this mandatory session, we were able to check on progress and set weekly goals. This helped everyone to keep expectations aligned on the status of the project. We were also able to divide tasks accordingly so everyone worked on an equal and manageable chunk. So this helped us to plan our project and keep us on track. In addition, during the meeting, we were able to discuss any project related issues such as code design, code style, and more. This helped us to keep the codebase cohesive.
 
-# Decision 2: Setting roles and responsibilities
+#### Decision 2: Setting roles and responsibilities
 
-Our team set up roles and responsibilities of each team member in deliverable 1. Xi Yu (Kristin) Huang's role is UX/UI design, Su Young Lee's role is DevOps, Felix Liu's role is back-end integration, and Magomed Evloev's role is front-end development. Setting up the roles helped everyone to focus on their area of strength. Although 
+Our team set up roles and responsibilities of each team member in deliverable 1. Xi Yu (Kristin) Huang's role is UX/UI design, Su Young Lee's role is DevOps, Felix Liu's role is back-end integration, and Magomed Evloev's role is front-end development. Setting up the roles helped everyone to focus on their area of strength. Although two group members dropped the course midway, the remaining group members Xi Yu (Kristin) Huang and Felix Liu used the starting roles as a base for their new responsibilities. It was decided that Xi Yu (Kristin) Huang would focus on UX/UI design and front-end development, where Felix Liu would focus on DevOps and back-end integration. Setting the roles helped Felix and Kristin to divide up responsibilities and they could work separately to make things more efficient.
 
-# Decision 3. Biweekly client meeting
+#### Decision 3. Biweekly client meeting
+
+
 
  * 2 - 4 decisions.
  * Ordered from most to least important.
