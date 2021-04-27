@@ -1,5 +1,19 @@
 #conversation-list {
   grid-area: conversation-list;
-  background: #0048aa;
+  background: #673ab7;
   overflow-y: scroll;
+}
+
+#conversation-list::-webkit-scrollbar {
+  width: 15px;
+}
+
+#conversation-list::-webkit-scrollbar-track {
+  background: var(--scrollbarBG);
+}
+
+#conversation-list::-webkit-scrollbar-thumb {
+  background-color: var(--thumbBG) ;
+  border-radius: 6px;
+  border: 3px solid var(--scrollbarBG);
 }

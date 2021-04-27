@@ -5,7 +5,7 @@ import TextField from "@material-ui/core/TextField";
 import { handleInput, handleLogin } from "../../actions/login";
 import Button from "@material-ui/core/Button";
 import "./styles.css";
-import mhapyLogo from "../../assets/mhapy.png";
+import mhapyLogo from "../../assets/MHAPY-no-words.png";
 import Box from "@material-ui/core/Box";
 
 class Login extends React.Component {
@@ -21,7 +21,7 @@ class Login extends React.Component {
 
     return (
       <Container maxWidth="xs" component="div">
-        <Box className="logo">
+        <Box className="logo" justifyContent="center">
           <img className="logo__img" src={mhapyLogo} alt="MHAPy" />
         </Box>
         <Typography className="login__header" variant="h3" align="center">

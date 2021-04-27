@@ -5,12 +5,13 @@
   align-items: center;
   grid-area: chat-title;
   background: #eee;
-  color: #0048aa;
+  color: #673ab7;
   font-weight: bold;
   font-size: 2rem;
   border-radius: 0 10px 0 0;
   box-shadow: 0 1px 3px -1px rgba(0, 0, 0, 0.75);
   padding: 0 20px;
+  z-index: 1;
 }
 
 #chat-title > img {
