@@ -42,10 +42,6 @@ In our deliverable 1, we planned to use Trello to keep track of the overarching 
 
 Although we planned mandatory weekly team meetings to discuss progress and goals, we did not have pre-scheduled and mandatory code sessions. We thought we would be flexible with holding code sessions as needed. However, we didn't end up having any code sessions. We believe the lack of scheduled code sessions caused difficulties because people procrastinated on the project without mandatory code sessions. For example, the two teammates that dropped, Su Young Lee and Magomed Evloev, did not contribute to the code repository at all. This is likely because they had trouble managing their time and dedicating time to the 301 project. If we had scheduled coding sessions, teammates could work together and ask for help immediately when they run into problems.
 
-#### Decision 3: Communication via Messenger group
-
-We decided to communicate via Messenger group as our primary method. However, this method proved to be not very successful because 
-
  * 2 - 4 decisions.
  * Ordered from most to least important.
  * Explain why (i.e. give a supporting argument) you consider a decision to be unsuccessful
@@ -60,15 +56,14 @@ List any **process-related** (i.e. team organization and how you work) changes y
  * Explain why you are making a change.
 
 #### Change 1: Code Sessions
-Since we only have two people now, we plan to 
 
-#### Change 2: Direct Communication on specific features and progress updates
-Since we only have two people now, we plan to have more frequent and direct communication via messenger. We don't plan to use Trello because we only have two people, but 
-
+We plan to hold coding sessions every week so that we can work on the project in a more structured way. This would help with procrastination and it would also make communication easier because we will be able communicate directly during the coding session. Furthermore, if a member of the gorup needs help, we can directly give advice and help them as needed. 
 
 ## Product - Review
 
 #### Q4. How was your product demo?
+ 
+ 
  * How did you prepare your demo?
  * What did you manage to demo to your partner?
  * Did your partner accept the features?
