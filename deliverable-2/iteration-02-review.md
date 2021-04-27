@@ -17,6 +17,15 @@
 
 List **process-related** (i.e. team organization and how you work) decisions that, in retrospect, turned out to be successful.
 
+# Decision 1: Weekly team meeting on Monday 
+
+Our team decided to have weekly team meetings on Monday at a set time when everyone would be available. This proved to be a successful decision as it allowed everyone on the team to come together in a mandatory session. During this mandatory session, we were able to check on progress and set weekly goals. This helped everyone to keep expectations aligned on the status of the project. In addition, this helped us to plan our project and keep us on track.
+
+# Decision 2: Setting roles and responsibilities
+
+Our team set up roles and responsibilities of each team member in deliverable 1. Xi Yu (Kristin) Huang's role is UX/UI design, Su Young Lee's role is DevOps, Felix Liu's role is back-end integration, and Magomed Evloev's role is front-end development. Setting up the roles helped everyone to focus on their area of strength. Although 
+
+# Decision 3. Biweekly client meeting
 
  * 2 - 4 decisions.
  * Ordered from most to least important.
@@ -26,6 +35,13 @@ List **process-related** (i.e. team organization and how you work) decisions tha
 #### Q2. Decisions that did not turn out as well as we hoped
 
 List **process-related** (i.e. team organization and how you work) decisions that, in retrospect, were not as successful as you thought they would be.
+
+Decision 1: Process Artifact Trello
+
+Decision 2: Communication via Messenger group
+
+Decision 3: Lack of scheduled and mandatory code sessions
+
 
  * 2 - 4 decisions.
  * Ordered from most to least important.
