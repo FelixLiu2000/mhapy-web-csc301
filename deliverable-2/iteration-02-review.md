@@ -59,6 +59,12 @@ List any **process-related** (i.e. team organization and how you work) changes y
  * Ordered from most to least important.
  * Explain why you are making a change.
 
+#### Change 1: Code Sessions
+Since we only have two people now, we plan to 
+
+#### Change 2: Direct Communication on specific features and progress updates
+Since we only have two people now, we plan to have more frequent and direct communication via messenger. We don't plan to use Trello because we only have two people, but 
+
 
 ## Product - Review
 
