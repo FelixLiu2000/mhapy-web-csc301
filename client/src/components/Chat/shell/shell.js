@@ -132,12 +132,12 @@ class ChatShell extends React.Component {
               .then(() => {
                 this.props.app.setState({
                   currentUser: null,
-                  loggedIn: false
-                })
+                  loggedIn: false,
+                });
               })
               .catch((err) => {
-                console.error(err)
-              })
+                console.error(err);
+              });
           }}
         >
           LOGOUT
