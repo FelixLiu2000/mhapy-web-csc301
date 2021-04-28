@@ -4,7 +4,7 @@
  >      
  > _Suggestion:_ Have your review meeting a day or two before the due date. This way you will have some time to go over (and edit) this document, and all team members should have a chance to make their contribution.
 
-##### written with the timeline in mind: when we just found out that the team is down to 2 people, Xi Yu (Kristin) Huang and Felix Liu.
+##### Q1, Q2, Q3 is written with the timeline in mind: when we just found out that the team is down to 2 people, Xi Yu (Kristin) Huang and Felix Liu.
 
 ## Iteration XX - Review & Retrospect
 
@@ -42,10 +42,6 @@ In our deliverable 1, we planned to use Trello to keep track of the overarching 
 
 Although we planned mandatory weekly team meetings to discuss progress and goals, we did not have pre-scheduled and mandatory code sessions. We thought we would be flexible with holding code sessions as needed. However, we didn't end up having any code sessions. We believe the lack of scheduled code sessions caused difficulties because people procrastinated on the project without mandatory code sessions. For example, the two teammates that dropped, Su Young Lee and Magomed Evloev, did not contribute to the code repository at all. This is likely because they had trouble managing their time and dedicating time to the 301 project. If we had scheduled coding sessions, teammates could work together and ask for help immediately when they run into problems.
 
-#### Decision 3: Communication via Messenger group
-
-We decided to communicate via Messenger group as our primary method. However, this method proved to be not very successful because 
-
  * 2 - 4 decisions.
  * Ordered from most to least important.
  * Explain why (i.e. give a supporting argument) you consider a decision to be unsuccessful
@@ -56,17 +52,17 @@ We decided to communicate via Messenger group as our primary method. However, th
 
 List any **process-related** (i.e. team organization and how you work) changes you are planning to make (if there are any)
 
- * Ordered from most to least important.
- * Explain why you are making a change.
+#### Change 1: More frequent Code Sessions
 
-
+We plan to hold multiple coding sessions every week so that we can work on the project in a more structured way. Code sessions will be where most of the work is done, but people are also encouraged to work on their own as well. Code sessions would help with procrastination and it would also make communication easier because we will be able communicate directly during the coding session. Furthermore, if a member of the gorup needs help, we can directly give advice and help them as needed via screenshare of that member's code. We will use the code sessions as time to work on separate tasks, but pair programming can also be done if necessary. Importantly, code sessions allows us to check on each other's progress on a task. Overall, code sessions will help our productivity and our communication.
+.
 ## Product - Review
 
-#### Q4. How was your product demo?
- * How did you prepare your demo?
- * What did you manage to demo to your partner?
- * Did your partner accept the features?
- * Were there change requests?
- * What did you learn from the demo from either a process or product perspective?
- * *This section will be marked very leniently so keep it brief and just make sure the points are addressed*
+##### Q4 is written at the time when the proof of concept finished
 
+#### Q4. How was your product demo?
+ 
+We prepared our demo by practicing beforehand from the perspective of an end user. So we thought of a user workflow and tested our app following this workflow. For example, the user would open the app, click on a conversation, then type messages to send to their accountability partner.
+
+We managed to demo the entire user workflow to our partner. They accepted the features that we made: Login, send message, display message, load more message, and switching between conversations. For change requests, the client wanted us to change the UI more so that it would match the new logo of MHAPy. From this demo, we learned about user workflows and UI cohesiveness. We were also able to communicate with the client on what are the most important features of the app.
+ 
