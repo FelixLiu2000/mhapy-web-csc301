@@ -7,6 +7,15 @@ export const connectChat = (comp) => {
   const NAMESPACE = "/api/message";
   const socket = io(NAMESPACE);
   socket.on("connect", () => {
+    socket.on("msgReceive", (data) => {
+      const msg = JSON.parse(data);
+      // Add date stamp
+      msg.dateCreated = new Date();
+      // Set messages state
+      comp.setState({
+        currentMessages: [msg, ...comp.state.currentMessages]
+      });
+    });
     console.log("[CHAT] Connected");
     comp.setState({ socket: socket });
   });
@@ -29,7 +38,7 @@ export const sendMessage = (comp, user, receiverID, message) => {
     message: message,
     chat_id: chatID,
     message_type: 0,
-    img: "",
+    img: ""
   };
   // Emit socket event
   socket.emit("new_message", JSON.stringify(msg));
@@ -40,15 +49,19 @@ export const sendMessage = (comp, user, receiverID, message) => {
 };
 
 // Get messages from server by page from a given conversation
-export const getMessages = (comp, chatID, page) => {
+export const getMessages = (comp, user, chatID, page) => {
   const url = `/api/chats/${chatID}/messages/?page=${page}`;
+  const socket = comp.state.socket;
+  // Join message socket room
+  socket.emit("joinChat", JSON.stringify({ chatId: chatID, userId: user }));
+  console.log("[CHAT] Joined chat");
   // Create request
   const request = new Request(url, {
     method: "GET",
     headers: {
       Accept: "application/json",
-      "Content-Type": "application/json",
-    },
+      "Content-Type": "application/json"
+    }
   });
   // Send request
   fetch(request)
@@ -66,13 +79,13 @@ export const getMessages = (comp, chatID, page) => {
             comp.setState((prevState) => ({
               messagePage: page,
               currentMessages: prevState.currentMessages.concat(body.messages),
-              hasMoreMessages: hasMoreMessages,
+              hasMoreMessages: hasMoreMessages
             }));
           } else {
             comp.setState(() => ({
               messagePage: page,
               currentMessages: body.messages,
-              hasMoreMessages: hasMoreMessages,
+              hasMoreMessages: hasMoreMessages
             }));
           }
         });
@@ -98,8 +111,8 @@ export const getChats = (comp, user) => {
     method: "GET",
     headers: {
       Accept: "application/json",
-      "Content-Type": "application/json",
-    },
+      "Content-Type": "application/json"
+    }
   });
   // Send request
   fetch(request)
@@ -125,7 +138,7 @@ export const getChats = (comp, user) => {
           comp.setState(
             {
               conversations: conversations || {},
-              conversationIDs: sortedIDs || [],
+              conversationIDs: sortedIDs || []
             },
             () => {
               // If current convo needs to be defined

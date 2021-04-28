@@ -5,9 +5,16 @@ class Message extends React.Component {
   render() {
     let messageClass = "message-row";
     let imageThumbnail = null;
-
-    const senderName = this.props.users[0]["username"];
-    const senderImgPath = this.props.users[0]["img"];
+    const ownUsername = this.props.currentUser.username;
+    let sender = null;
+    if (this.props.users && this.props.users.length > 0) {
+      sender = this.props.users[0]
+      if (sender === ownUsername) {
+        sender = this.props.users[1]
+      }
+    }
+    const senderName = sender["username"];
+    const senderImgPath = sender["img"];
 
     if (this.props.isMyMessage) {
       messageClass += " you-message";

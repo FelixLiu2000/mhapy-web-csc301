@@ -14,7 +14,7 @@ class MessageList extends React.Component {
             message.sender_id === this.props.app.state.currentUser.id
           }
           message={message}
-          app={this.props.app}
+          currentUser={this.props.app.state.currentUser}
           users={this.props.users}
         />
       );
