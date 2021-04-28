@@ -41,11 +41,6 @@ In our deliverable 1, we planned to use Trello to keep track of the overarching 
 
 Although we planned mandatory weekly team meetings to discuss progress and goals, we did not have pre-scheduled and mandatory code sessions. We thought we would be flexible with holding code sessions as needed. However, we didn't end up having any code sessions. We believe the lack of scheduled code sessions caused difficulties because people procrastinated on the project without mandatory code sessions. For example, the two teammates that dropped, Su Young Lee and Magomed Evloev, did not contribute to the code repository at all. This is likely because they had trouble managing their time and dedicating time to the 301 project. If we had scheduled coding sessions, teammates could work together and ask for help immediately when they run into problems.
 
- * 2 - 4 decisions.
- * Ordered from most to least important.
- * Explain why (i.e. give a supporting argument) you consider a decision to be unsuccessful
- * Feel free to refer/link to process artifact(s).
-
 
 #### Q3. Planned changes
 
