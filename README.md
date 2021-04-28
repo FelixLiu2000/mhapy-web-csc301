@@ -21,7 +21,7 @@ The current features of MHAPy-Web constitute a full-stack, working proof-of-conc
 
 ## Instructions
 A deployed version of MHAPy-Web is available [here](https://mhapy-web.herokuapp.com/).
-> NOTE: The page may be slow to load initially due to Heroku. Additionally, there may be problems initially fetching messages or logging in due to latency issues on Heroku; use > CTRL+R on the browser to perform a force refresh if you encounter a blank screen.
+> NOTE: The page may be slow to load initially due to Heroku. Additionally, there may be problems initially fetching messages or logging in due to latency issues on Heroku; use CTRL+SHIFT+R on the browser to perform a force refresh if you encounter a blank screen.
 
 To use the web application, open the deployed website above. Accounts have been pre-created on the existing MHAPy
 backend. To login, use the credentials provided to you and click "Login". 
