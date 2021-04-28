@@ -50,8 +50,9 @@ class ChatShell extends React.Component {
       currentConvoID: conversationID,
     });
     if (conversationID !== -1) {
+      const userID = this.props.app.state.currentUser.id;
       // Get first page of messages
-      getMessages(this, conversationID, 1);
+      getMessages(this, userID, conversationID, 1);
     }
   }
 
@@ -75,7 +76,7 @@ class ChatShell extends React.Component {
   componentDidMount() {
     connectSocket(this.props.app.state.currentUser.id);
     connectChat(this);
-    getChats(this, this.props.app.state.currentUser);
+    getChats(this, this.props.app.state.currentUser.id);
   }
 
   render() {
@@ -90,6 +91,7 @@ class ChatShell extends React.Component {
         />
         <NewConversation />
         <ChatTitle
+          currentUser={this.props.app.state.currentUser}
           currentConvo={
             this.state.currentMessages.length > 0
               ? this.state.conversations[this.state.currentConvoID]
@@ -105,6 +107,7 @@ class ChatShell extends React.Component {
             onLoadMore={() =>
               getMessages(
                 this,
+                this.props.app.state.currentUser.id,
                 this.state.currentConvoID,
                 this.state.messagePage + 1
               )

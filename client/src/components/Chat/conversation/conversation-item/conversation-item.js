@@ -17,7 +17,6 @@ class ConversationItem extends React.Component {
     });
     const lastMessageDate = conversation.lastMessage.dateCreated;
     const userImgPath = conversation.users[0].img;
-    console.log(userImgPath);
     const dateCreated = getDateTimeString(lastMessageDate);
     return (
       <div

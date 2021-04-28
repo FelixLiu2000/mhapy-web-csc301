@@ -22,6 +22,7 @@ router.get("/:id/chats", authMiddleware, async (req, res) => {
   // Logged in user is not the requested user
   if (userID !== req.session.user) {
     res.status(401).send("Unauthorized, cannot retrieve chats of other users");
+    return;
   }
   const chats = await getUserChats(userID);
   if (!chats) {

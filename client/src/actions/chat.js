@@ -7,7 +7,27 @@ export const connectChat = (comp) => {
   const NAMESPACE = "/api/message";
   const socket = io(NAMESPACE);
   socket.on("connect", () => {
+    socket.on("msgReceive", (data) => {
+      const msg = JSON.parse(data);
+      // Find conversation tied to message
+      const senderID = msg.sender_id;
+      const currentConvoID = comp.state.currentConvoID;
+      const currentConvo = comp.state.conversations[currentConvoID];
+      // If message received is from current convo
+      if (currentConvo.users[0].id === senderID ||
+        currentConvo.users[1].id === senderID) {
+        // Add date stamp
+        msg.dateCreated = new Date();
+        // Add to rendered messages
+        comp.setState({
+          currentMessages: [msg, ...comp.state.currentMessages]
+        });
+      }
+      // Refresh chats for current user
+      getChats(comp, msg.receiver_id);
+    });
     console.log("[CHAT] Connected");
+    // Store chat socket in state
     comp.setState({ socket: socket });
   });
 };
@@ -29,7 +49,7 @@ export const sendMessage = (comp, user, receiverID, message) => {
     message: message,
     chat_id: chatID,
     message_type: 0,
-    img: "",
+    img: ""
   };
   // Emit socket event
   socket.emit("new_message", JSON.stringify(msg));
@@ -40,15 +60,19 @@ export const sendMessage = (comp, user, receiverID, message) => {
 };
 
 // Get messages from server by page from a given conversation
-export const getMessages = (comp, chatID, page) => {
+export const getMessages = (comp, user, chatID, page) => {
   const url = `/api/chats/${chatID}/messages/?page=${page}`;
+  const socket = comp.state.socket;
+  // Join message socket room
+  socket.emit("joinChat", JSON.stringify({ chatId: chatID, userId: user }));
+  console.log("[CHAT] Joined chat");
   // Create request
   const request = new Request(url, {
     method: "GET",
     headers: {
       Accept: "application/json",
-      "Content-Type": "application/json",
-    },
+      "Content-Type": "application/json"
+    }
   });
   // Send request
   fetch(request)
@@ -66,13 +90,13 @@ export const getMessages = (comp, chatID, page) => {
             comp.setState((prevState) => ({
               messagePage: page,
               currentMessages: prevState.currentMessages.concat(body.messages),
-              hasMoreMessages: hasMoreMessages,
+              hasMoreMessages: hasMoreMessages
             }));
           } else {
             comp.setState(() => ({
               messagePage: page,
               currentMessages: body.messages,
-              hasMoreMessages: hasMoreMessages,
+              hasMoreMessages: hasMoreMessages
             }));
           }
         });
@@ -90,16 +114,15 @@ export const getMessages = (comp, chatID, page) => {
 };
 
 // Get chats from server for a given user
-export const getChats = (comp, user) => {
-  const userID = user.id;
+export const getChats = (comp, userID) => {
   const url = `/api/users/${userID}/chats`;
   // Create request
   const request = new Request(url, {
     method: "GET",
     headers: {
       Accept: "application/json",
-      "Content-Type": "application/json",
-    },
+      "Content-Type": "application/json"
+    }
   });
   // Send request
   fetch(request)
@@ -117,15 +140,16 @@ export const getChats = (comp, user) => {
             conversations[id] = chat;
           }
           // Set conversations state
-          const sortedIDs = Object.keys(conversations).sort((a, b) => {
-            const chatADate = conversations[a].lastMessage.dateCreated;
-            const chatBDate = conversations[b].lastMessage.dateCreated;
-            return chatADate < chatBDate ? 1 : -1;
-          });
+          const sortedIDs = Object.keys(conversations).sort(
+            (a, b) => {
+              const chatADate = conversations[a].lastMessage.dateCreated;
+              const chatBDate = conversations[b].lastMessage.dateCreated;
+              return chatADate < chatBDate ? 1 : -1;
+            });
           comp.setState(
             {
               conversations: conversations || {},
-              conversationIDs: sortedIDs || [],
+              conversationIDs: sortedIDs || []
             },
             () => {
               // If current convo needs to be defined
