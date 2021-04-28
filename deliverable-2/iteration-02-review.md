@@ -4,8 +4,6 @@
  >      
  > _Suggestion:_ Have your review meeting a day or two before the due date. This way you will have some time to go over (and edit) this document, and all team members should have a chance to make their contribution.
 
-##### Q1, Q2, Q3 is written with the timeline in mind: when we just found out that the team is down to 2 people, Xi Yu (Kristin) Huang and Felix Liu.
-
 ## Iteration XX - Review & Retrospect
 
  * When: April 27, 2021
@@ -13,6 +11,7 @@
 
 ## Process - Reflection
 
+##### Q1, Q2, Q3 is written with the timeline of early March in mind: when we just found out that the team is down to 2 people, Xi Yu (Kristin) Huang and Felix Liu.
 
 #### Q1. Decisions that turned out well
 
@@ -58,7 +57,7 @@ We plan to hold multiple coding sessions every week so that we can work on the p
 .
 ## Product - Review
 
-##### Q4 is written at the time when the proof of concept finished
+##### Q4 is written at the time when the proof of concept finished in late April
 
 #### Q4. How was your product demo?
  
