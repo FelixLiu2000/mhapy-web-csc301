@@ -13,7 +13,8 @@ import {
   getMessages,
   getChats,
 } from "../../../actions/chat";
-import { connectSocket } from "../../../actions/user";
+import { connectSocket, logout } from "../../../actions/user";
+import Button from "@material-ui/core/Button";
 
 // const initialState = {
 //   conversations: [],
@@ -81,47 +82,67 @@ class ChatShell extends React.Component {
 
   render() {
     return (
-      <div id="chat-container">
-        <ConversationSearch />
-        <ConversationList
-          onConversationItemSelected={this.changeConversation}
-          conversations={this.state.conversations}
-          conversationIDs={this.state.conversationIDs}
-          currentConvoID={this.state.currentConvoID}
-          currentUser={this.props.app.state.currentUser}
-        />
-        <NewConversation />
-        <ChatTitle
-          currentUser={this.props.app.state.currentUser}
-          currentConvo={
-            this.state.currentMessages.length > 0
-              ? this.state.conversations[this.state.currentConvoID]
-              : null
-          }
-        />
-        {this.state.currentConvoID !== -1 ? (
-          <MessageList
-            messages={this.state.currentMessages}
-            app={this.props.app}
-            users={this.state.conversations[this.state.currentConvoID].users}
-            showLoadMore={this.state.hasMoreMessages}
-            onLoadMore={() =>
-              getMessages(
-                this,
-                this.props.app.state.currentUser.id,
-                this.state.currentConvoID,
-                this.state.messagePage + 1
-              )
+      <>
+        <div id="chat-container">
+          <ConversationSearch />
+          <ConversationList
+            onConversationItemSelected={this.changeConversation}
+            conversations={this.state.conversations}
+            conversationIDs={this.state.conversationIDs}
+            currentConvoID={this.state.currentConvoID}
+            currentUser={this.props.app.state.currentUser}
+          />
+          <NewConversation />
+          <ChatTitle
+            currentUser={this.props.app.state.currentUser}
+            currentConvo={
+              this.state.currentMessages.length > 0
+                ? this.state.conversations[this.state.currentConvoID]
+                : null
             }
           />
-        ) : (
-          <NoConversations />
-        )}
-        <ChatForm
-          disabled={!this.state.socket}
-          onNewMessage={this.sendNewMessage}
-        />
-      </div>
+          {this.state.currentConvoID !== -1 ? (
+            <MessageList
+              messages={this.state.currentMessages}
+              app={this.props.app}
+              users={this.state.conversations[this.state.currentConvoID].users}
+              showLoadMore={this.state.hasMoreMessages}
+              onLoadMore={() =>
+                getMessages(
+                  this,
+                  this.props.app.state.currentUser.id,
+                  this.state.currentConvoID,
+                  this.state.messagePage + 1
+                )
+              }
+            />
+          ) : (
+            <NoConversations />
+          )}
+          <ChatForm
+            disabled={!this.state.socket}
+            onNewMessage={this.sendNewMessage}
+          />
+        </div>
+        <Button
+          variant={"outlined"}
+          color={"secondary"}
+          onClick={() => {
+            logout()
+              .then(() => {
+                this.props.app.setState({
+                  currentUser: null,
+                  loggedIn: false
+                })
+              })
+              .catch((err) => {
+                console.error(err)
+              })
+          }}
+        >
+          LOGOUT
+        </Button>
+      </>
     );
   }
 }

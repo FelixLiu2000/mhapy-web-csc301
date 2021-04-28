@@ -39,6 +39,21 @@ export const login = async (user) => {
   return await requestUser(request);
 };
 
+// Send request to server to logout user
+export const logout = async () => {
+  const url = "/api/auth/logout";
+  // Create request
+  const request = new Request(url, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+  });
+  // Send request
+  return await fetch(request);
+};
+
 // Check if user session is still valid, return id if valid
 export const checkSession = async () => {
   const url = "/api/auth/check-session";
