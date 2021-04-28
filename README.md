@@ -45,7 +45,10 @@ Building the React front-end:
  * From the `/client` directory, run `npm run build`
  
 Starting the ExpressJS server:
-> NOTE: The URL of the MHAPy backend server and a session secret must be set as environment variables, as shown below.
+> NOTE: The full URL of the MHAPy backend server and a session secret must be set as environment variables, 
+> as shown below.
+> 
+> For instance, `API_URL=http://github.com` `SESS_SECRET=secret123` must be set.
 >
 > Every deployment of MHAPy-Web needs to set these environment variables before running. For example, this can be done
 > using Config Vars on Heroku. 

@@ -9,14 +9,25 @@ export const connectChat = (comp) => {
   socket.on("connect", () => {
     socket.on("msgReceive", (data) => {
       const msg = JSON.parse(data);
-      // Add date stamp
-      msg.dateCreated = new Date();
-      // Set messages state
-      comp.setState({
-        currentMessages: [msg, ...comp.state.currentMessages]
-      });
+      // Find conversation tied to message
+      const senderID = msg.sender_id;
+      const currentConvoID = comp.state.currentConvoID;
+      const currentConvo = comp.state.conversations[currentConvoID];
+      // If message received is from current convo
+      if (currentConvo.users[0].id === senderID ||
+        currentConvo.users[1].id === senderID) {
+        // Add date stamp
+        msg.dateCreated = new Date();
+        // Add to rendered messages
+        comp.setState({
+          currentMessages: [msg, ...comp.state.currentMessages]
+        });
+      }
+      // Refresh chats for current user
+      getChats(comp, msg.receiver_id);
     });
     console.log("[CHAT] Connected");
+    // Store chat socket in state
     comp.setState({ socket: socket });
   });
 };
@@ -103,8 +114,7 @@ export const getMessages = (comp, user, chatID, page) => {
 };
 
 // Get chats from server for a given user
-export const getChats = (comp, user) => {
-  const userID = user.id;
+export const getChats = (comp, userID) => {
   const url = `/api/users/${userID}/chats`;
   // Create request
   const request = new Request(url, {
@@ -130,11 +140,12 @@ export const getChats = (comp, user) => {
             conversations[id] = chat;
           }
           // Set conversations state
-          const sortedIDs = Object.keys(conversations).sort((a, b) => {
-            const chatADate = conversations[a].lastMessage.dateCreated;
-            const chatBDate = conversations[b].lastMessage.dateCreated;
-            return chatADate < chatBDate ? 1 : -1;
-          });
+          const sortedIDs = Object.keys(conversations).sort(
+            (a, b) => {
+              const chatADate = conversations[a].lastMessage.dateCreated;
+              const chatBDate = conversations[b].lastMessage.dateCreated;
+              return chatADate < chatBDate ? 1 : -1;
+            });
           comp.setState(
             {
               conversations: conversations || {},

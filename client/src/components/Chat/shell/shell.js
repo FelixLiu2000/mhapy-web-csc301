@@ -76,7 +76,7 @@ class ChatShell extends React.Component {
   componentDidMount() {
     connectSocket(this.props.app.state.currentUser.id);
     connectChat(this);
-    getChats(this, this.props.app.state.currentUser);
+    getChats(this, this.props.app.state.currentUser.id);
   }
 
   render() {
@@ -107,6 +107,7 @@ class ChatShell extends React.Component {
             onLoadMore={() =>
               getMessages(
                 this,
+                this.props.app.state.currentUser.id,
                 this.state.currentConvoID,
                 this.state.messagePage + 1
               )
