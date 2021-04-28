@@ -58,5 +58,5 @@ We plan to hold multiple coding sessions every week so that we can work on the p
  
 We prepared our demo by practicing beforehand from the perspective of an end user. So we thought of a user workflow and tested our app following this workflow. For example, the user would open the app, click on a conversation, then type messages to send to their accountability partner.
 
-We managed to demo the entire user workflow to our partner. They accepted the features that we made: Login, send message, display message, load more message, and switching between conversations. For change requests, the client wanted us to change the UI more so that it would match the new logo of MHAPy. From this demo, we learned about user workflows and UI cohesiveness. We were also able to communicate with the client on what are the most important features of the app.
+We managed to demo the entire user workflow to our partner. They accepted the features that we made: Login, send message, display message, load more message, and switching between conversations. The client had no change requests as we maintained frequent communication with the client. From this demo, we learned about user workflows. We were also able to communicate with the client on what are the most important features of the app.
  
