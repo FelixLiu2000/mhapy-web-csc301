@@ -17,7 +17,7 @@ export const connectChat = (comp) => {
       // If message received is from current convo
       if (
         (currentConvo.users[0].id === senderID ||
-        currentConvo.users[1].id === senderID) &&
+          currentConvo.users[1].id === senderID) &&
         currentUserID !== senderID
       ) {
         // Add date stamp

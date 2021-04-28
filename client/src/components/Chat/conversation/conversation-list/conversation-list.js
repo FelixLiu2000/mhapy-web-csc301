@@ -10,6 +10,7 @@ class ConversationList extends React.Component {
       conversations,
       conversationIDs,
       currentConvoID,
+      currentUser,
     } = this.props;
     const conversationItems = conversationIDs.map((id) => {
       const conversation = conversations[id];
@@ -20,6 +21,7 @@ class ConversationList extends React.Component {
           onConversationItemSelected={onConversationItemSelected}
           isActive={id === currentConvoID}
           conversation={conversation}
+          currentUser={currentUser}
         />
       );
     });
