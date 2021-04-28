@@ -4,8 +4,6 @@
  >      
  > _Suggestion:_ Have your review meeting a day or two before the due date. This way you will have some time to go over (and edit) this document, and all team members should have a chance to make their contribution.
 
-##### Q1, Q2, Q3 is written with the timeline in mind: when we just found out that the team is down to 2 people, Xi Yu (Kristin) Huang and Felix Liu.
-
 ## Iteration XX - Review & Retrospect
 
  * When: April 27, 2021
@@ -13,6 +11,7 @@
 
 ## Process - Reflection
 
+##### Q1, Q2, Q3 is written with the timeline of early March in mind: when we just found out that the team is down to 2 people, Xi Yu (Kristin) Huang and Felix Liu.
 
 #### Q1. Decisions that turned out well
 
@@ -54,11 +53,11 @@ List any **process-related** (i.e. team organization and how you work) changes y
 
 #### Change 1: More frequent Code Sessions
 
-We plan to hold multiple coding sessions every week so that we can work on the project in a more structured way. Code sessions will be where most of the work is done, but people are also encouraged to work on their own as well. Code sessions would help with procrastination and it would also make communication easier because we will be able communicate directly during the coding session. Furthermore, if a member of the gorup needs help, we can directly give advice and help them as needed via screenshare of that member's code. We will use the code sessions as time to work on separate tasks, but pair programming can also be done if necessary. Importantly, code sessions allows us to check on each other's progress on a task. Overall, code sessions will help our productivity and our communication.
+We plan to hold multiple coding sessions every week so that we can work on the project in a more structured way. Code sessions will be where most of the work is done, but people are also encouraged to work on their own as well. Code sessions would help with procrastination and it would also make communication easier because we will be able communicate directly during the coding session. Furthermore, if a member of the group needs help, we can directly give advice and help them as needed via screenshare of that member's code. We will use the code sessions as time to work on separate tasks, but pair programming can also be done if necessary. Importantly, code sessions allows us to check on each other's progress on a task. Overall, code sessions will help our productivity and our communication.
 .
 ## Product - Review
 
-##### Q4 is written at the time when the proof of concept finished
+##### Q4 is written at the time when the proof of concept finished in late April
 
 #### Q4. How was your product demo?
  
