@@ -88,6 +88,7 @@ class ChatShell extends React.Component {
           conversations={this.state.conversations}
           conversationIDs={this.state.conversationIDs}
           currentConvoID={this.state.currentConvoID}
+          currentUser={this.props.app.state.currentUser}
         />
         <NewConversation />
         <ChatTitle

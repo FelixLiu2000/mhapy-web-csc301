@@ -9,9 +9,9 @@ class ChatTitle extends React.Component {
     const ownUsername = this.props.currentUser.username;
     let currentConvoUsername = null;
     if (currentConvo && currentConvo.users.length > 0) {
-       currentConvoUsername = currentConvo.users[0].username
+      currentConvoUsername = currentConvo.users[0].username;
       if (currentConvoUsername === ownUsername) {
-        currentConvoUsername = currentConvo.users[1].username
+        currentConvoUsername = currentConvo.users[1].username;
       }
       username = currentConvoUsername || "";
     }

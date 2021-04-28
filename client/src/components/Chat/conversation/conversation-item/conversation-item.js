@@ -11,12 +11,21 @@ class ConversationItem extends React.Component {
       conversation,
       isActive,
       onConversationItemSelected,
+      currentUser,
     } = this.props;
     const className = classNames("conversation", {
       active: isActive,
     });
+    const ownUsername = currentUser.username;
+    let sender = {};
+    if (conversation.users && conversation.users.length > 0) {
+      sender = conversation.users[0];
+      if (sender.username === ownUsername) {
+        sender = conversation.users[1];
+      }
+    }
     const lastMessageDate = conversation.lastMessage.dateCreated;
-    const userImgPath = conversation.users[0].img;
+    const userImgPath = sender.img || "";
     const dateCreated = getDateTimeString(lastMessageDate);
     return (
       <div
