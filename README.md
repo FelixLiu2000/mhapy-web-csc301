@@ -1,5 +1,5 @@
 # MHAPy-Web
-Created by Felix Liu & Xi Yu (Kristin) Huang for CSC301, Winter 2021.
+Created by Felix Liu & Xi Yu (Kristin) Huang for CSC301, Winter 2021 and our client, MHAPy.
 ## Description 
 MHAPy-Web is the web-based counterpart to the MHAPy mobile application.
 
