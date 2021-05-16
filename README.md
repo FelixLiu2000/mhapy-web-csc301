@@ -81,8 +81,8 @@ changes, allowing end-users to view them immediately without further work on our
 
  ## License
 
-MHAPy-Web is licensed under the 
-MIT License, available [here](https://github.com/csc301-winter-2021/team-project-17-mhapy/blob/main/LICENSE).
+MHAPy-Web was exclusively licensed to our client under the 
+MIT License.
 
 This license was chosen to allow closed source versions of the app to be created by our client, as requested.
 
